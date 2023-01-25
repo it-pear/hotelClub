@@ -1,0 +1,26 @@
+.toolbar-info {
+
+}
+.phone {
+  text-decoration: none;
+}
+.q-toolbar__title {
+  max-width: max-content;
+}
+
+.tabs-link {
+  .q-tab {
+    border-radius: 48px;
+    .q-tab__label {
+      font-weight: 500;
+    }
+  }
+  
+}
+
+.q-field {
+  .q-field__append {
+    position: absolute;
+    right: 5px;
+  }
+}
