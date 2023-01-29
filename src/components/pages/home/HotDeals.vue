@@ -5,7 +5,7 @@
 
       <div class="row cards">
         <div 
-          class="col-3 card-sec"
+          class="col-xs-12 col-md-3 col-3 card-sec"
           v-for="item in deals"
           :key="item"
         >

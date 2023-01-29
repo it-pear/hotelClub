@@ -24,3 +24,15 @@
     right: 5px;
   }
 }
+
+@media (max-width: 772px) {
+  .q-field {
+    .q-field__control {
+      height: 46px;
+      min-height: 46px;
+      .q-field__label {
+        font-size: 14px;
+      }
+    }
+  }
+}

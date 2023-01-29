@@ -37,7 +37,7 @@
           <q-tab name="2" icon="money" label="Аренда" />
         </q-tabs>
         <div class="row content bg-blue-grey-1">
-          <div class="col-3 q-pa-sm">
+          <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
               v-model="form.id"
@@ -45,11 +45,11 @@
               lazy-rules
             />
           </div>
-          <div class="col-3 q-pa-sm">
+          <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-select
               v-model="model"
               :options="options"
-              label="Количество комнат"
+              label="Кол-во комнат"
               multiple
               emit-value
               map-options
@@ -66,7 +66,7 @@
               </template>
             </q-select>
           </div>
-          <div class="col-3 q-pa-sm">
+          <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
               v-model="form.priceTo"
@@ -77,7 +77,7 @@
               ]"
             />
           </div>
-          <div class="col-3 q-pa-sm">
+          <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
               v-model="form.PriceFor"
@@ -89,7 +89,7 @@
             />
           </div>
 
-          <div class="row col-12">
+          <div class="row col-12 additation">
             <q-toggle 
               v-model="accept" 
               label="Дополнительные параметры" 
