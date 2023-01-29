@@ -14,7 +14,7 @@ $lg-breakpoint: 1920px;
   margin-right: auto;
   margin-left: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media (min-width: $xs-breakpoint) {
@@ -76,6 +76,9 @@ $lg-breakpoint: 1920px;
         
       }
     }
+  }
+  .btn-login {
+    margin-left: 6px;
   }
 }
 

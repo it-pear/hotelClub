@@ -48,13 +48,13 @@
               unelevated rounded color="primary" 
               label="Войти" 
               icon="svguse:icons/allIcons.svg#phone" 
-              class="q-ml-auto btn-reverse-il-mb" 
+              class="q-ml-auto btn-reverse-il-mb mb-visible" 
             />
             <q-btn 
               unelevated rounded color="primary" 
               label="Войти" 
               icon="svguse:icons/allIcons.svg#user" 
-              class="q-ml-sm btn-reverse-il-mb" 
+              class="q-ml-sm q-ml-auto btn-login btn-reverse-il-mb" 
             />
             
             <q-btn 

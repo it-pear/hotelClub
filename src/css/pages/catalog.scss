@@ -1,0 +1,24 @@
+.catalog {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  .my-sidebar {
+
+  }
+  .catalog-sec {
+    padding-left: 20px;
+    .cards {
+      width: 100%;
+      .card-sec {
+        padding: 10px;
+        padding-bottom: 20px;
+        padding-top: 0;
+      }
+    }
+    .pagination-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+  }
+}
