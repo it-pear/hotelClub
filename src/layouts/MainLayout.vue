@@ -55,15 +55,36 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar>
+    <q-footer class="bg-blue-grey-1 text-white q-pa-lg">
+      <div class="row container">
+        <div class="col-12">
+          <q-toolbar style="padding-left: 10px;">
+            <q-toolbar-title>
+              <q-avatar>
+                <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg">
+              </q-avatar>
+            </q-toolbar-title>
+            <a href="tel:89999999999" class="phone text-body2 text-weight-medium text-blue-grey-13">8 (999) 999 99-99</a>
+            <q-tabs align="left" class="tabs-link q-ml-auto">
+              <q-route-tab
+                v-for="link in routes"
+                :key="link"
+                :to="link.link"
+                :label="link.name"
+                class="text-blue-grey-13"
+              />
+            </q-tabs>
+          </q-toolbar>
+        </div>
+        <div class="col-12 q-pt-md row" style="padding-left: 10px; padding-right: 10px;">
+          <a href="" class="phone text-body2 text-weight-medium text-blue-grey-13">Политика конфиденциальности</a>
+          <a href="" class="phone text-body2 text-weight-medium text-blue-grey-13 q-ml-auto">Наименовании компании разработчика</a>
+        </div>
+        <div class="col-12 q-pt-lg text-center">
+          <span class="text-blue-grey-13 ">&copy; Все права защищены</span>
+        </div>
+      </div>
+      
     </q-footer>
 
   </q-layout>
@@ -83,7 +104,7 @@ export default {
         link: ''
       },
       {
-        name: 'Оформление документов',
+        name: 'Услуги',
         link: ''
       },
       {

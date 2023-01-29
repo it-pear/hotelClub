@@ -1,17 +1,32 @@
 <template>
   <q-page>
     <GeneralPage />
+    <HotDeals />
+    <PropertyRental />
+    <BayRental />
+    <DocumentsSec />
+    <TeamSec />
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 import GeneralPage from 'src/components/pages/home/GeneralPage'
+import HotDeals from 'src/components/pages/home/HotDeals'
+import PropertyRental from 'src/components/pages/home/PropertyRental'
+import BayRental from 'src/components/pages/home/BayRental'
+import DocumentsSec from 'src/components/pages/home/DocumentsSec'
+import TeamSec from 'src/components/pages/home/TeamSec'
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
-    GeneralPage
+    GeneralPage,
+    PropertyRental,
+    HotDeals,
+    BayRental,
+    DocumentsSec,
+    TeamSec
   }
 })
 </script>

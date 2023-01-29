@@ -19,8 +19,8 @@
     </q-dialog>
     
     <div class="column container">
-      <h1 class="text-h1 text-weight-medium text-white">Недвижимость в Турции</h1>
-      <h3 class="text-h4 text-white">Покупка, Аренда недвижимости в Турции от звонка до покупки</h3>
+      <h1 class="text-h1 text-weight-medium text-white text-center">Недвижимость в Турции</h1>
+      <h3 class="text-h4 text-white text-center">Покупка, Аренда недвижимости в Турции от звонка до покупки</h3>
     </div>
     <div class="column container">
       <q-form
