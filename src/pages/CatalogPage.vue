@@ -1,10 +1,10 @@
 <template>
   <q-page class="catalog">
     <div class="container row">
-      <div class="col-3">
+      <div class="col-12 col-md-3 sidebar-col">
         <SideBar />
       </div>
-      <div class="col-9">
+      <div class="col-12 col-md-9">
         <CatalogSec />
       </div>
     </div>

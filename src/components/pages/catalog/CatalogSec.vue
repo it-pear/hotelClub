@@ -39,11 +39,11 @@
             <div class="text-subtitle1 text-weight-bold col-12">
               $ 100 000
             </div>
-            <div class="row items-center" style="width: 100%;">
+            <div class="row items-center row-captions" style="width: 100%;">
               <div class="text-caption text-grey col-6">
                 Площадь 55 м<sup>2</sup>
               </div>
-              <div class="text-caption text-grey col-6">
+              <div class="text-caption row-captions text-grey col-6">
                 До моря 150 м.
               </div>
             </div>
@@ -86,6 +86,21 @@ export default defineComponent({
     const deals = ref([
       {
         
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+
+      },
+      {
+
       },
       {
 

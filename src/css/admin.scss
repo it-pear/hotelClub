@@ -1,0 +1,39 @@
+.auth-page {
+  align-items: center;
+  display: flex;
+  .q-card {
+    width: 100%;
+    width: 400px;
+    min-height: 560px;
+    padding-bottom: 40px;
+    transition: all 0.3s;
+    border-radius: 4px !important;
+    @media (max-width: 420px) {
+      width: 300px;
+      min-height: auto;
+    }
+  }
+}
+
+.admin-layout {
+  .q-page {
+    padding: 30px;
+  }
+  .q-drawer--left {
+    .q-drawer__content {
+      .q-tabs {
+        .q-tabs__content {
+          flex-direction: column;
+          padding: 20px;
+          .q-tab {
+            text-align: left;
+            .q-tab__content {
+              width: 100%;
+              align-items: flex-start;
+            }
+          }
+        }
+      }
+    }
+  }
+}

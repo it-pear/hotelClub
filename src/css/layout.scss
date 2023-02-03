@@ -82,6 +82,12 @@ $lg-breakpoint: 1920px;
   }
 }
 
+@media (min-width: 772px) and (max-width: 992px) {
+  .btn-login {
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 772px) {
   .q-drawer--right {
     width: 100% !important;
@@ -167,7 +173,7 @@ $lg-breakpoint: 1920px;
           justify-content: center;
           align-items: center;
           .q-tab {
-            padding: 0;
+            padding: 0 4px;
           }
         }
       }
@@ -179,6 +185,19 @@ $lg-breakpoint: 1920px;
       width: 100%;
       text-align: center;
       margin-left: 0 !important;
+    }
+  }
+}
+
+.auth-layout {
+  .q-field {
+    .q-field__focusable-action {
+      right: 30px;
+    }
+  }
+  .q-field--error {
+    .icon-pr {
+      right: 30px;
     }
   }
 }

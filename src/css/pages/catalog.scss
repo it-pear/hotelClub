@@ -21,4 +21,77 @@
       padding-top: 10px;
     }
   }
+  @media (min-width: 992px) {
+    .sidebar-col {
+      min-height: 100vh;
+    }
+    .my-sidebar {
+      position: sticky;
+      top: 0;
+    }
+  }
+  @media (max-width: 1440px) {
+    .catalog-sec {
+      .cards {
+        width: 100%;
+        .card-sec {
+          .my-card {
+            .q-card__section {
+              padding-left: 10px;
+              padding-right: 10px;
+              .row-captions {
+                .text-caption {
+                  width: 100%;
+                }
+              }
+            }
+            .q-img {
+              .q-img__content { 
+                .text-subtitle2 {
+                  text-align: left;
+                  padding-left: 10px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    .my-sidebar {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .catalog-sec {
+      padding-left: 15px;
+      padding-right: 15px;
+      .cards {
+        width: 100%;
+        .card-sec {
+          padding: 0;
+          padding-bottom: 20px;
+          padding-top: 0;
+
+          .my-card {
+            .q-card__section {
+              padding-left: 10px;
+              padding-right: 10px;
+              .row-captions {
+                .text-caption {
+                  width: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+      .pagination-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
+      }
+    }
+  }
 }

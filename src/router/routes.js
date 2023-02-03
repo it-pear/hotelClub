@@ -14,6 +14,30 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/auth/',
+    component: () => import('layouts/AuthLayout.vue'),
+    children: [
+      { 
+        path: '', 
+        component: () => import('pages/auth/AuthPage.vue') 
+      },
+    ]
+  },
+  {
+    path: '/admin',
+    component: () => import('layouts/AdminLayout.vue'),
+    children: [
+      { 
+        path: '', 
+        component: () => import('pages/admin/HomePage.vue') 
+      },
+      { 
+        path: 'catalog', 
+        component: () => import('pages/admin/CatalogPage.vue') 
+      },
+    ]
+  },
 
   {
     path: '/:catchAll(.*)*',
