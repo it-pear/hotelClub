@@ -6,7 +6,7 @@
         v-for="item in deals"
         :key="item"
       >
-        <q-card class="my-card">
+        <q-card class="my-card" flat bordered>
           <q-img src="https://primeinvest.group/wp-content/uploads/2022/12/d2-1.jpg">
             <div class="absolute-bottom text-subtitle2 text-center" style="padding: 5px 0;">
               Новостройка

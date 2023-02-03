@@ -162,6 +162,14 @@ $lg-breakpoint: 1920px;
       }
       .q-tabs {
         margin-left: 0;
+        .q-tabs__content {
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          .q-tab {
+            padding: 0;
+          }
+        }
       }
     }
     .phone {

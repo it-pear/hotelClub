@@ -48,7 +48,7 @@
         
       </div>
 
-      <div class="text-center q-pt-lg">
+      <div class="text-center q-pt-lg w-100">
         <q-btn 
           label="Смотреть весь каталог" 
           unelevated 

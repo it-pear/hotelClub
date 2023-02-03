@@ -3,7 +3,7 @@
     
     <q-header class="my-header" height-hint="98" style="border-bottom: 1px solid #eceff1;">
       <q-toolbar class="toolbar-info bg-blue-grey-1">
-          <div class="row container">
+          <div class="row container" style="align-items: center;">
             <div class="col-xs-12 col-sm-9 col-md-9">
               <a 
                 href="tel:89999999999" 
@@ -29,9 +29,10 @@
 
       <q-toolbar class="bg-white text-blue-grey-13 toolbar-head" color="blue-grey-13" style="min-height: 80px;">
         <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
-          <div class="container">
+          <div class="container" style="align-items: center;">
             <q-toolbar-title>
-              <q-avatar>
+              <q-avatar to="/">
+                <a href="/" class="link"></a>
                 <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg">
               </q-avatar>
             </q-toolbar-title>
