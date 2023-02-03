@@ -12,6 +12,10 @@ const routes = [
         path: '/catalog', 
         component: () => import('pages/CatalogPage.vue') 
       },
+      { 
+        path: '/single/:id', 
+        component: () => import('pages/SinglePage.vue') 
+      },
     ]
   },
   {

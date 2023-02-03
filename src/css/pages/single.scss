@@ -1,0 +1,227 @@
+.single {
+  padding-bottom: 60px;
+  .row {
+    width: 100%;
+  }
+  .my-carousel {
+    width: 100%;
+    min-height: 415px;
+    border-radius: 4px;
+  }
+  .content-single {
+    padding-left: 30px;
+    .content-single__price {
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .content-single__info {
+      font-size: 18px;
+      font-weight: 500;
+      padding-top: 30px;
+      .id {
+        margin-left: 10px;
+        &:before {
+          background-color: #1976D2;
+          -webkit-border-radius: 50%;
+          border-radius: 50%;
+          content: "";
+          display: inline-block;
+          height: 6px;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 6px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .content-single__location {
+      display: flex;
+      padding-top: 15px;
+      font-size: 18px;
+      font-weight: 500;
+      flex-wrap: wrap;
+      .text {
+        margin-left: 5px;
+      }
+      .more {
+        flex: 0 0 100%;
+        margin-left: 30px;
+      }
+    }
+    .prems {
+      padding-top: 30px;
+      .item {
+        margin-bottom: 30px;
+        .title {
+          font-size: 16px;
+          font-weight: 500;
+        }
+        .subtitle {
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .list-more {
+    margin-top: 30px;
+    width: 100%;
+    .q-expansion-item {
+      margin-bottom: 30px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 4px;
+      .q-item {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        .q-item__label {
+          font-size: 24px;
+          font-weight: 500;
+        }
+      }
+      .q-expansion-item__content {
+        font-size: 18px;
+      }
+    }
+    .infrastructure {
+      .q-expansion-item__content {
+        .q-card {
+          .q-card__section {
+            display: flex;          
+            flex-wrap: wrap;
+            padding: 0 8px;
+            .my-card {
+              box-shadow: none;
+              background: $primary;
+              flex: 0 0 calc(25% - 16px);
+              max-width: calc(25% - 16px);
+              margin: 16px 8px;
+              
+              .q-card__section {
+                padding: 0;
+              }
+              .text {
+                font-size: 18px;
+                font-weight: 500;
+                color: white;
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+              }
+            }
+          }
+        }
+      }
+      
+    }
+  }
+
+  .catalog-sec {
+    .pagination-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      .q-pagination {
+        max-width: max-content;
+      }
+    }
+  }
+
+  @media (max-width: 772px) {
+    padding-left: 15px; 
+    padding-right: 15px; 
+    padding-bottom: 60px;
+    h1 {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+    .my-carousel {
+      height: 250px;
+      min-height: 250px;
+      border-radius: 4px;
+    }
+    .content-single {
+      padding-left: 0;
+      .content-single__price {
+        font-size: 24px;
+        font-weight: 600;
+        padding-top: 10px;
+      }
+      .content-single__info {
+        font-size: 16px;
+        font-weight: 500;
+        padding-top: 10px;
+      }
+      .content-single__location {
+        display: flex;
+        padding-top: 15px;
+        font-size: 16px;
+        .more {
+          padding-left: 30px;
+          margin-left: 0;
+        }
+      }
+      .prems {
+        padding-top: 20px;
+        .item {
+          margin-bottom: 15px;
+          .title {
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .subtitle {
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+      }
+      .q-btn {
+        margin-top: 10px;
+      }
+    }
+    .list-more {
+      .q-expansion-item {
+        margin-bottom: 20px;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 4px;
+        .q-item {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          .q-item__label {
+            font-size: 18px;
+          }
+        }
+        .q-expansion-item__content {
+          font-size: 14px;
+        }
+      }
+      .infrastructure {
+        .q-expansion-item__content {
+          .q-card {
+            .q-card__section {
+              display: flex;          
+              flex-wrap: wrap;
+              padding: 0 15px;
+              padding-bottom: 15px;
+              .my-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin: 5px 0;
+                
+                .q-card__section {
+                  padding: 0;
+                }
+                .text {
+                  font-size: 16px;
+                  padding: 7.5px;
+                }
+              }
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}

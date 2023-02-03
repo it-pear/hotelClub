@@ -5,6 +5,8 @@ body {
 }
 
 
+@import 'quasar.variables';
+
 @import 'components';
 @import 'layout';
 @import 'admin';
@@ -12,6 +14,7 @@ body {
 // pages
 @import 'pages/home';
 @import 'pages/catalog';
+@import 'pages/single';
 
 
 .text-h3 {
@@ -69,3 +72,4 @@ body {
     display: none !important;
   }
 }
+
