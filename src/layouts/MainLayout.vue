@@ -145,19 +145,15 @@ export default {
     const routes = ref([
       {
         name: 'Каталог недвижимости',
-        link: ''
+        link: '/catalog'
       },
       {
         name: 'Услуги',
-        link: ''
+        link: '/services'
       },
       {
-        name: 'О нас',
-        link: ''
-      },
-      {
-        name: 'Контакты',
-        link: ''
+        name: 'О нас / Контакты',
+        link: 'about'
       },
     ])
 

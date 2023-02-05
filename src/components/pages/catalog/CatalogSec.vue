@@ -62,6 +62,7 @@
               color="primary" 
               class="q-ml-auto" 
               padding="4px 10px"
+              to="/single/1"
             />
           </q-card-actions>
         </q-card>

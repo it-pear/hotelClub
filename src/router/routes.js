@@ -20,6 +20,10 @@ const routes = [
         path: '/services', 
         component: () => import('pages/ServicesPage.vue') 
       },
+      { 
+        path: '/about', 
+        component: () => import('pages/AboutPage.vue') 
+      },
     ]
   },
   {

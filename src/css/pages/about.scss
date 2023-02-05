@@ -1,0 +1,99 @@
+.about {
+  padding-bottom: 80px;
+  .content {
+    width: 100%;
+    .info {
+      padding-left: 30px;
+      .text-h5 {
+        max-width: 70%;
+      }
+    }
+    .work-sec {
+      .item {
+        margin-top: 20px;
+        padding-right: 10px;
+        .title {
+          font-size: 18px;
+          font-weight: 500;
+        }
+        .subtitle {
+          margin-top: 5px;
+          font-size: 16px;
+          div {
+            margin-top: 5px;
+            &:first-child {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .team-sec {
+    width: 100%;
+    padding-bottom: 40px;
+    .my-card {
+      margin: 10px;
+      &.col-4 {
+        flex: 0 0 calc(33.333333% - 20px);
+        max-width: calc(33.333333% - 20px);
+        padding-bottom: 10px;
+        .q-img,
+        img {
+          height: 216px;
+          object-fit: cover;
+        }
+      }
+      &.col-12 {
+        flex: 0 0 calc(100% - 20px);
+        max-width: calc(100% - 20px);
+      }
+    }
+    @media (max-width: 772px) {
+      .my-card {
+        &.col-4 {
+          flex: 0 0 calc(100% - 20px);
+          max-width: calc(100% - 20px);
+        }
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    .content {
+      width: 100%;
+      .q-card {
+        .q-card__section {
+          flex-direction: column;
+          iframe {
+            width: 100% !important;
+          }
+        }
+      }
+      .info {
+        padding-left: 30px;
+        .text-h5 {
+          max-width: 100%;
+        }
+      }
+      .work-sec {
+        .item {
+          margin-top: 20px;
+          .title {
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .subtitle {
+            margin-top: 5px;
+            font-size: 14px;
+            div {
+              margin-top: 5px;
+              &:first-child {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

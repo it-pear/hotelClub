@@ -25,15 +25,28 @@
       }
       .q-img {
         .q-img__content {
-          bottom: 0;
-          height: 109px;
-          position: absolute;
-          top: initial;
+          display: flex;
+          align-items: flex-end;
           .text-subtitle2 {
             text-align: left;
           }
         }
         
+      }
+    }
+  }
+  @media (max-width: 772px ) {
+    .content {
+      width: 100%;
+      .list {
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .item {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
       }
     }
   }
