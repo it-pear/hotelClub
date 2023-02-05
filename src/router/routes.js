@@ -16,6 +16,10 @@ const routes = [
         path: '/single/:id', 
         component: () => import('pages/SinglePage.vue') 
       },
+      { 
+        path: '/services', 
+        component: () => import('pages/ServicesPage.vue') 
+      },
     ]
   },
   {

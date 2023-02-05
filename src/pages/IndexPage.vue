@@ -5,6 +5,9 @@
     <PropertyRental />
     <BayRental />
     <DocumentsSec />
+    <div class="container q-pt-lg">
+      <FormPerson />
+    </div>
     <TeamSec />
   </q-page>
 </template>
@@ -17,6 +20,7 @@ import PropertyRental from 'src/components/pages/home/PropertyRental'
 import BayRental from 'src/components/pages/home/BayRental'
 import DocumentsSec from 'src/components/pages/home/DocumentsSec'
 import TeamSec from 'src/components/pages/home/TeamSec'
+import FormPerson from 'src/components/FormPerson'
 
 export default defineComponent({
   name: 'IndexPage',
@@ -26,7 +30,8 @@ export default defineComponent({
     HotDeals,
     BayRental,
     DocumentsSec,
-    TeamSec
+    TeamSec,
+    FormPerson
   }
 })
 </script>

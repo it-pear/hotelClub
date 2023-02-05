@@ -1,0 +1,40 @@
+.services {
+  padding-bottom: 80px;
+  .content {
+    width: 100%;
+    .list {
+      width: 100%;
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .item {
+        padding: 0 10px;
+        position: relative;
+        padding-bottom: 20px;
+        &:nth-child(1) {
+          padding-left: 0;
+          padding-right: 10px;
+        }
+        &:nth-child(1n) {
+          padding-left: 0;
+        }
+        &:nth-child(2n) {
+          padding-right: 0;
+          padding-left: 10px;
+        }
+      }
+      .q-img {
+        .q-img__content {
+          bottom: 0;
+          height: 109px;
+          position: absolute;
+          top: initial;
+          .text-subtitle2 {
+            text-align: left;
+          }
+        }
+        
+      }
+    }
+  }
+}
