@@ -140,3 +140,21 @@
     }
   }
 }
+
+.my-table {
+  table {
+    tbody {
+      .td-image {
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  .q-table__bottom {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}

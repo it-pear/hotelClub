@@ -10,7 +10,6 @@
         @reset="onReset"
         class="q-gutter-md"
       >
-        
         <q-expansion-item
           style="border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.12) !important;"
           icon="explore"
@@ -136,6 +135,7 @@
             </q-card-section>
           </q-card>
         </q-expansion-item>
+        
         <q-expansion-item
           style="border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.12) !important;"
           icon="explore"
