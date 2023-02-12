@@ -42,9 +42,22 @@
         />
       </template>
 
+      <template v-slot:body-cell-name="props">
+        <q-td :props="props" class="td-name">
+          <div style="max-width: 10vw; overflow: hidden;">{{props.row.name}}</div>
+        </q-td>
+      </template>
       <template v-slot:body-cell-image="props">
         <q-td :props="props" class="td-image">
           <img :src="props.row.image" alt="">
+        </q-td>
+      </template>
+      <template v-slot:body-cell-custom="props">
+        <q-td :props="props" class="td-custom">
+          <div>
+            <q-btn outline round color="primary" icon="edit" class="q-mr-md" to="catalog/2" />
+            <q-btn outline round color="negative" icon="delete" />
+          </div>
         </q-td>
       </template>
 
@@ -85,11 +98,13 @@ export default defineComponent({
       { name: 'city', align: 'left', label: 'Город', field: 'city' },
       { name: 'area', align: 'left', label: 'Район', field: 'area', sortable: true, },
       { name: 'distanceSea', align: 'left', label: 'Расстояние до моря', field: 'distanceSea', sortable: true, },
+      { name: 'custom', align: 'left', label: '', field: 'custom', sortable: false },
     ])
 
     const rows = ref([
       {
         id: 1,
+        custom: '',
         image: 'https://png.pngtree.com/png-vector/20191113/ourmid/pngtree-personal-personalization-profile-user-line-icon-vector-png-image_1984805.jpg',
         name: 'Роскошные апартаменты в районе Авсаллар',
         apartType: 'Новостройка',
@@ -105,7 +120,7 @@ export default defineComponent({
       },
     ])
 
-    const visibleColumns = ref(['id', 'image', 'name', 'apartType', 'square', 'layout', 'finishing', 'numberStoreys', 'price', 'city', 'area'])
+    const visibleColumns = ref(['custom', 'id', 'image', 'name', 'square', 'layout', 'finishing', 'price', 'city'])
     const selected = ref([])
 
     const tab = ref(false)

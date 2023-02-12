@@ -46,7 +46,11 @@ const routes = [
       },
       { 
         path: 'catalog', 
-        component: () => import('pages/admin/CatalogPage.vue') 
+        component: () => import('src/pages/admin/catalog/CatalogPage.vue') 
+      },
+      { 
+        path: 'catalog/:id', 
+        component: () => import('src/pages/admin/catalog/IdPage.vue') 
       },
     ]
   },
