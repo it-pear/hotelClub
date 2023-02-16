@@ -50,8 +50,12 @@
 
           <q-select
             filled
-            v-model="formData.typeModel"
-            :options="formData.typeOptions"
+            v-model="formData.category_id"
+            :options="categories"
+            option-value="id"
+            option-label="name"
+            emit-value
+            map-options
             label="Тип объекта"
             class="q-mb-lg"
           />
@@ -68,26 +72,6 @@
             class="q-mb-lg"
           />
 
-          <div class="row">
-            <div class="col-12 col-lg-9">
-              <q-input
-                filled
-                type="number"
-                v-model="formData.deadline"
-                :disable="value"
-                label="Срок сдачи (дд.мм.гггг)"
-                lazy-rules
-                :rules="[
-                  (val) =>
-                    (val && val.length > 0) || 'Поле не должно быть пустым',
-                ]"
-              />
-            </div>
-            <div class="col-12 col-lg-3">
-              <q-toggle v-model="value" @update="disable" label="Объект сдан" />
-            </div>
-          </div>
-
         </div>
 
         <div class="col-12 col-lg-6 q-pl-md">
@@ -95,7 +79,6 @@
             filled
             type="number"
             v-model="formData.price"
-            :disable="value"
             label="Цена (euro)"
             lazy-rules
             class="q-mb-md"
@@ -119,7 +102,6 @@
                 filled
                 type="number"
                 v-model="formData.floorthis"
-                :disable="value"
                 label="Номер этажа"
                 lazy-rules
                 :rules="[
@@ -133,7 +115,6 @@
                 filled
                 type="number"
                 v-model="formData.floorIs"
-                :disable="value"
                 label="Количество этажей в доме"
                 lazy-rules
                 :rules="[
@@ -148,8 +129,11 @@
             <div class="col-12 col-lg-6 q-pr-sm q-mb-lg">
               <q-select
                 filled
-                v-model="formData.ModelCity"
-                :options="formData.OptionsCity"
+                v-model="formData.city"
+                :options="citys"
+                option-value="id"
+                option-label="name"
+                @update:model-value="formData.Modelregion = null"
                 label="Город"
               />
             </div>
@@ -157,8 +141,12 @@
               <q-select
                 filled
                 v-model="formData.Modelregion"
-                :options="formData.Optionsregion"
-                :disable="formData.ModelCity === null"
+                :options="formData.city.region"
+                :disable="formData.city.length === 0"
+                option-value="id"
+                option-label="name"
+                emit-value
+                map-options
                 label="Район"
               />
             </div>
@@ -172,18 +160,25 @@
             class="q-mb-lg"
           />
 
-          <q-input
-            filled
-            type="number"
-            v-model="formData.floorIs"
-            :disable="value"
-            label="Количество этажей в доме"
-            lazy-rules
-            :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Поле не должно быть пустым',
-            ]"
-          />
+          <div class="row">
+            <div class="col-12 col-lg-9">
+              <q-input
+                filled
+                type="number"
+                v-model="formData.deadline"
+                :disable="value"
+                label="Срок сдачи (дд.мм.гггг)"
+                lazy-rules
+                :rules="[
+                  (val) =>
+                    (val && val.length > 0) || 'Поле не должно быть пустым',
+                ]"
+              />
+            </div>
+            <div class="col-12 col-lg-3">
+              <q-toggle v-model="value" @update="disable" label="Объект сдан" />
+            </div>
+          </div>
 
         </div>
       </div>
@@ -212,8 +207,9 @@
 </template>
 
 <script>
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, onMounted } from "vue";
 import { useQuasar } from "quasar";
+import { pagesApi } from 'src/api/pages'
 
 export default defineComponent({
   setup() {
@@ -222,8 +218,7 @@ export default defineComponent({
     const formData = ref({
       name: "",
       description: "",
-      typeModel: null,
-      typeOptions: ["Новостройка", "Вторичка", "Вилла", "Коммерция"],
+      category_id: null,
       SrokModel: null,
       SrokOptions: ["Новостройка", "Вторичка", "Вилла", "Коммерция"],
       square: "",
@@ -235,8 +230,7 @@ export default defineComponent({
       finishingModel: null,
       finishingOptions: ["Чистовая", "Предчистовая", "Евроремонт"],
       price: '',
-      ModelCity: null,
-      OptionsCity: ["Аланья", "Газипаша"],
+      city: [],
       Modelregion: null,
       Optionsregion: ["Авсаллар", "Аланья", "Бекташ", "Демирташ"],
       avatar: null,
@@ -244,15 +238,44 @@ export default defineComponent({
     });
     const value = ref(false)
 
+    const advantages = ref([])
+    const categories = ref([])
+    const citys = ref([])
+    const properties = ref([])
+    const types = ref([])
+
     function disable() {
       value.value = !value.value
       formData.value.deadline = ""
     }
 
+    async function getData() {
+      try {
+        await pagesApi.getAll().then(resp => {
+          advantages.value = resp.advantages
+          categories.value = resp.categories
+          citys.value = resp.citys
+          properties.value = resp.properties
+          types.value = resp.types
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    onMounted(() => {
+      getData()
+    })
+
     return {
       formData,
       value,
       disable,
+      advantages,
+      categories,
+      citys,
+      properties,
+      types,
     };
   },
 });

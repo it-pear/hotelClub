@@ -26,5 +26,22 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
+  // Router.beforeEach((to, from, next) => {
+  //   const { auth } = to.meta;
+  //   const role = 'manager'
+  //   console.log(auth, role)
+  
+  //   if (auth) {
+  //     if (!role) {
+  //       return next({ path: '/login' });
+  //     }
+  //     if (auth.length && !auth.includes(role)) {
+  //       return next({path: '/'});
+  //     }
+  //   }
+  //   next()  
+  
+  // })
+
   return Router
 })

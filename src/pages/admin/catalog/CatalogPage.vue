@@ -1,7 +1,17 @@
 <template>
   <q-page class="catalog-page">
     <div class="filter q-pb-lg">
-      <div class="text-h5 q-mb-md">Фильтр по параметрам</div>
+      <div class="row q-mb-md items-center justify-between">
+        <div class="text-h5 ">Фильтр по параметрам</div>
+        <q-btn 
+          outline 
+          round 
+          color="primary" 
+          icon="add" 
+          class="q-mr-md" 
+          to="catalog/create" 
+        />
+      </div>
       <FilterCatalog />
     </div>
     <q-table
@@ -65,13 +75,15 @@
         
       </template>
     </q-table>
+    {{data}}
   </q-page>
 </template>
 
 <script>
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, onMounted } from 'vue'
+import { postsApi } from 'src/api/post'
 import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog'
-
+ 
 export default defineComponent({
   components: {
     FilterCatalog,
@@ -90,7 +102,7 @@ export default defineComponent({
       { name: 'name', align: 'left', label: 'Название', field: 'name', sortable: false },
       { name: 'apartType', align: 'left', label: 'Тип квартиры', field: 'apartType', sortable: true, },
       { name: 'square', align: 'left', label: 'Площадь', field: 'square', sortable: true, },
-      { name: 'seadline', align: 'left', label: 'Срок сдачи', field: 'deadline' },
+      { name: 'deadline', align: 'left', label: 'Срок сдачи', field: 'deadline' },
       { name: 'layout', align: 'left', label: 'планировка', field: 'layout', sortable: true, },
       { name: 'numberStoreys', align: 'left', label: 'Этажность', field: 'numberStoreys', sortable: true, },
       { name: 'finishing', align: 'left', label: 'Отделка', field: 'finishing', sortable: true },
@@ -101,29 +113,27 @@ export default defineComponent({
       { name: 'custom', align: 'left', label: '', field: 'custom', sortable: false },
     ])
 
-    const rows = ref([
-      {
-        id: 1,
-        custom: '',
-        image: 'https://png.pngtree.com/png-vector/20191113/ourmid/pngtree-personal-personalization-profile-user-line-icon-vector-png-image_1984805.jpg',
-        name: 'Роскошные апартаменты в районе Авсаллар',
-        apartType: 'Новостройка',
-        square: '55.00 м2',
-        seadline: 'Сдана',
-        layout: '1+1',
-        numberStoreys: '1 из 9',
-        finishing: 'Чистовая',
-        price: 80000,
-        city: 'Аланья',
-        area: 'Авсаллар',
-        distanceSea: 1300,
-      },
-    ])
+    const rows = ref([])
 
     const visibleColumns = ref(['custom', 'id', 'image', 'name', 'square', 'layout', 'finishing', 'price', 'city'])
     const selected = ref([])
 
     const tab = ref(false)
+
+    async function getPosts() {
+      try {
+        await postsApi.getAll().then(resp => {
+          rows.value = resp
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    onMounted(() => {
+      getPosts()
+    })
+
     return {
       columns,
       selected,
@@ -132,7 +142,8 @@ export default defineComponent({
       visibleColumns,
       getSelectedString () {
         return selected.value.length === 0 ? '' : `${selected.value.length} объект${selected.value.length > 1 ? 's' : ''} выбран из ${rows.length}`
-      }
+      },
+      getPosts,
     }
   },
 })

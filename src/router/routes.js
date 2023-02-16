@@ -6,26 +6,49 @@ const routes = [
     children: [
       { 
         path: '', 
-        component: () => import('pages/IndexPage.vue') 
+        component: () => import('pages/IndexPage.vue'),
+        meta: {
+          auth: ['admin']
+        },
       },
       { 
         path: '/catalog', 
-        component: () => import('pages/CatalogPage.vue') 
+        component: () => import('pages/CatalogPage.vue'),
+        meta: {
+          auth: ['admin']
+        },
       },
       { 
         path: '/single/:id', 
-        component: () => import('pages/SinglePage.vue') 
+        component: () => import('pages/SinglePage.vue'),
+        meta: {
+          auth: ['admin']
+        },
+      },
+      { 
+        path: '/single/create', 
+        component: () => import('pages/SinglePage.vue'),
+        meta: {
+          auth: ['admin']
+        },
       },
       { 
         path: '/services', 
-        component: () => import('pages/ServicesPage.vue') 
+        component: () => import('pages/ServicesPage.vue'),
+        meta: {
+          auth: ['admin']
+        },
       },
       { 
         path: '/about', 
-        component: () => import('pages/AboutPage.vue') 
+        component: () => import('pages/AboutPage.vue'),
+        meta: {
+          auth: ['admin']
+        },
       },
     ]
   },
+
   {
     path: '/auth/',
     component: () => import('layouts/AuthLayout.vue'),
@@ -36,6 +59,7 @@ const routes = [
       },
     ]
   },
+
   {
     path: '/admin',
     component: () => import('layouts/AdminLayout.vue'),
