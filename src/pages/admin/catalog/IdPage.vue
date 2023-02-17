@@ -2,26 +2,28 @@
   <q-page class="catalog-single">
     <div class="text-h5 q-mb-xl">Создание нового объекта</div>
 
-    <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+    <q-form @submit="createObject" @reset="onReset" class="q-gutter-md">
       <div class="row">
         <div class="col-12 col-lg-6 q-pr-md">
+          
           <q-input
             filled
             v-model="formData.name"
             label="Название объекта"
             lazy-rules
-            class="q-mb-md"
             :rules="[
               (val) => (val && val.length > 0) || 'Поле не должно быть пустым',
             ]"
           />
+          <q-toggle v-model="formData.is_recommended"   label="Рекомендуемый товар" class="q-mb-md" />
 
           <div class="row">
             <div class="col-12 col-lg-6 q-pr-sm q-mb-lg">
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Главное изображение</div>
                 <q-uploader
-                  url="http://localhost:4444/upload"
+                  @added="onFileChange"
+                  accept=".jpg, .png, image/*"
                   label="Перетащите или выберите изображение"
                   style="max-width: 100%;width: 100%;"
                 />
@@ -62,10 +64,10 @@
 
           <q-input
             filled
-            type="number"
             v-model="formData.square"
             label="Площадь помещения (00.00)"
             lazy-rules
+            mask="##.##"
             :rules="[
               (val) => (val && val.length > 0) || 'Поле не должно быть пустым',
             ]"
@@ -90,8 +92,8 @@
             
           <q-select
             filled
-            v-model="formData.layoutModel"
-            :options="formData.layoutOptions"
+            v-model="formData.layout_id"
+            :options="layoutOptions"
             label="Планировка"
             class="q-mb-lg"
           />
@@ -133,14 +135,14 @@
                 :options="citys"
                 option-value="id"
                 option-label="name"
-                @update:model-value="formData.Modelregion = null"
+                @update:model-value="formData.region_id = null"
                 label="Город"
               />
             </div>
             <div class="col-12 col-lg-6 q-pl-sm q-mb-lg">
               <q-select
                 filled
-                v-model="formData.Modelregion"
+                v-model="formData.region_id"
                 :options="formData.city.region"
                 :disable="formData.city.length === 0"
                 option-value="id"
@@ -154,8 +156,8 @@
 
           <q-select
             filled
-            v-model="formData.finishingModel"
-            :options="formData.finishingOptions"
+            v-model="formData.finishing"
+            :options="finishingOptions"
             label="Отделка"
             class="q-mb-lg"
           />
@@ -164,21 +166,46 @@
             <div class="col-12 col-lg-9">
               <q-input
                 filled
-                type="number"
                 v-model="formData.deadline"
                 :disable="value"
                 label="Срок сдачи (дд.мм.гггг)"
                 lazy-rules
+                mask="##.##.####"
                 :rules="[
                   (val) =>
                     (val && val.length > 0) || 'Поле не должно быть пустым',
                 ]"
               />
             </div>
+
             <div class="col-12 col-lg-3">
               <q-toggle v-model="value" @update="disable" label="Объект сдан" />
             </div>
           </div>
+
+          <q-select
+            filled
+            v-model="formData.type_id"
+            :options="types"
+            option-value="id"
+            option-label="name"
+            emit-value
+            map-options
+            :disable="formData.category_id !== 1 && formData.category_id !== 2"
+            label="Тип квартиры"
+            class="q-mb-lg"
+          />
+          <q-select
+            filled
+            v-model="formData.distance_id"
+            :options="distances"
+            option-value="id"
+            option-label="name"
+            emit-value
+            map-options
+            label="Расстояние до моря"
+            class="q-mb-lg"
+          />
 
         </div>
       </div>
@@ -187,14 +214,17 @@
         <q-btn
           unelevated
           rounded
+          no-caps
           color="primary"
           label="Создать объект"
           class="q-mr-md"
           size="lg"
+          type="submit"
         />
         <q-btn
           rounded
           outline
+          no-caps
           label="Отмена"
           type="reset"
           color="primary"
@@ -210,6 +240,7 @@
 import { ref, defineComponent, onMounted } from "vue";
 import { useQuasar } from "quasar";
 import { pagesApi } from 'src/api/pages'
+import { postsApi } from 'src/api/post'
 
 export default defineComponent({
   setup() {
@@ -219,34 +250,42 @@ export default defineComponent({
       name: "",
       description: "",
       category_id: null,
-      SrokModel: null,
-      SrokOptions: ["Новостройка", "Вторичка", "Вилла", "Коммерция"],
       square: "",
       deadline: "",
-      layoutModel: null,
-      layoutOptions: ["1", "1+1", "2+1", "3+1"],
+      layout_id: null,
+      type_id: null,
       floorthis: null,
       floorIs: null,
-      finishingModel: null,
-      finishingOptions: ["Чистовая", "Предчистовая", "Евроремонт"],
+      finishing: null,
       price: '',
+      storeys: '',
       city: [],
-      Modelregion: null,
-      Optionsregion: ["Авсаллар", "Аланья", "Бекташ", "Демирташ"],
+      city_id: null,
+      region_id: null,
       avatar: null,
-      images: null,
+      image: null,
+      is_recommended: false,
+      distance_id: null,
     });
     const value = ref(false)
+    const images = ref(null)
 
     const advantages = ref([])
     const categories = ref([])
     const citys = ref([])
     const properties = ref([])
     const types = ref([])
+    const distances = ref([])
+    const finishingOptions = ref(["Чистовая", "Предчистовая", "Евроремонт"])
+    const layoutOptions = ref([1, "1+1", "2+1", "3+1"])
 
     function disable() {
       value.value = !value.value
       formData.value.deadline = ""
+    }
+
+    function onFileChange(file) {
+      formData.value.image = file[0]
     }
 
     async function getData() {
@@ -257,9 +296,31 @@ export default defineComponent({
           citys.value = resp.citys
           properties.value = resp.properties
           types.value = resp.types
+          distances.value = resp.distances
         })
       } catch (err) {
         console.log(err)
+      } 
+    }
+
+    async function createObject() {
+      formData.value.city_id = formData.value.city.id
+      formData.value.storeys = `${formData.value.floorthis} из ${formData.value.floorIs}`
+
+      if (formData.value.is_recommended === true) {
+        formData.value.is_recommended = 1
+      } else {
+        formData.value.is_recommended = 0
+      }
+
+      try {
+        await postsApi.createPost(formData.value).then(resp => {
+          console.log(resp)
+        })
+      } catch (err) {
+        console.log(err)
+      } finally {
+        formData.value.is_recommended = 0
       }
     }
 
@@ -268,6 +329,7 @@ export default defineComponent({
     })
 
     return {
+      getData,
       formData,
       value,
       disable,
@@ -276,6 +338,12 @@ export default defineComponent({
       citys,
       properties,
       types,
+      images,
+      finishingOptions,
+      layoutOptions,
+      distances,
+      onFileChange,
+      createObject,
     };
   },
 });

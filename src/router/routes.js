@@ -26,13 +26,6 @@ const routes = [
         },
       },
       { 
-        path: '/single/create', 
-        component: () => import('pages/SinglePage.vue'),
-        meta: {
-          auth: ['admin']
-        },
-      },
-      { 
         path: '/services', 
         component: () => import('pages/ServicesPage.vue'),
         meta: {
@@ -74,6 +67,10 @@ const routes = [
       },
       { 
         path: 'catalog/:id', 
+        component: () => import('src/pages/admin/catalog/IdPage.vue') 
+      },
+      { 
+        path: 'catalog/create', 
         component: () => import('src/pages/admin/catalog/IdPage.vue') 
       },
     ]
