@@ -14,16 +14,16 @@ export const postsApi = {
             custom: '',
             image: el.image,
             name: el.name,
-            apartType: el.type_id,
+            apartType: el.type.name,
             square: el.square,
             deadline: el.deadline,
-            layout: el.layout,
+            layout: el.layout.name,
             numberStoreys: el.storeys,
             finishing: el.finishing,
-            price: el.finishing,
-            city: el.city_id,
-            area: el.region,
-            distanceSea: el.distance_id,
+            price: el.price,
+            city: el.city.name,
+            area: el.region.name,
+            distanceSea: el.distance.name,
           }
         })
       });
@@ -68,9 +68,7 @@ export const postsApi = {
   
   delPost(id) {
     try {
-      return httpClient.post(`${url}/delete`, {
-        id: id 
-      }).then(({ data }) => {
+      return httpClient.post(`${url}/del/${id}`).then(({ data }) => {
         return data
       })
     } catch (err) {

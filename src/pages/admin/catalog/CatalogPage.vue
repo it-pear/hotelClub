@@ -59,20 +59,20 @@
       </template>
       <template v-slot:body-cell-image="props">
         <q-td :props="props" class="td-image">
-          <img :src="props.row.image" alt="">
+          <img :src="`http://127.0.0.1:8000/${props.row.image}`" alt="">
         </q-td>
       </template>
       <template v-slot:body-cell-custom="props">
         <q-td :props="props" class="td-custom">
           <div>
             <q-btn outline round color="primary" icon="edit" class="q-mr-md" to="catalog/2" />
-            <q-btn outline round color="negative" icon="delete" />
+            <q-btn outline round color="negative" icon="delete" @click="delPost(props.row.id)" />
           </div>
         </q-td>
       </template>
 
       <template v-slot:bottom>
-        
+        {{rows}}
       </template>
     </q-table>
     {{data}}
@@ -129,6 +129,16 @@ export default defineComponent({
         console.log(err)
       }
     }
+    async function delPost(id) {
+      try {
+        await postsApi.delPost(id).then(resp => {
+          rows.value = rows.value.filter((item) => item.id !== id)
+          console.log(resp)
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
     onMounted(() => {
       getPosts()
@@ -144,6 +154,7 @@ export default defineComponent({
         return selected.value.length === 0 ? '' : `${selected.value.length} объект${selected.value.length > 1 ? 's' : ''} выбран из ${rows.length}`
       },
       getPosts,
+      delPost,
     }
   },
 })

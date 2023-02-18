@@ -94,6 +94,10 @@
             filled
             v-model="formData.layout_id"
             :options="layoutOptions"
+            option-value="id"
+            option-label="name"
+            emit-value
+            map-options
             label="Планировка"
             class="q-mb-lg"
           />
@@ -238,13 +242,15 @@
 
 <script>
 import { ref, defineComponent, onMounted } from "vue";
+import { useRouter } from 'vue-router'
 import { useQuasar } from "quasar";
 import { pagesApi } from 'src/api/pages'
 import { postsApi } from 'src/api/post'
 
 export default defineComponent({
   setup() {
-    const $q = useQuasar();
+    const $q = useQuasar()
+    const router = useRouter()
 
     const formData = ref({
       name: "",
@@ -277,7 +283,7 @@ export default defineComponent({
     const types = ref([])
     const distances = ref([])
     const finishingOptions = ref(["Чистовая", "Предчистовая", "Евроремонт"])
-    const layoutOptions = ref([1, "1+1", "2+1", "3+1"])
+    const layoutOptions = ref([])
 
     function disable() {
       value.value = !value.value
@@ -297,6 +303,7 @@ export default defineComponent({
           properties.value = resp.properties
           types.value = resp.types
           distances.value = resp.distances
+          layoutOptions.value = resp.layouts
         })
       } catch (err) {
         console.log(err)
@@ -316,11 +323,12 @@ export default defineComponent({
       try {
         await postsApi.createPost(formData.value).then(resp => {
           console.log(resp)
+          router.push('/admin/catalog')
         })
       } catch (err) {
         console.log(err)
       } finally {
-        formData.value.is_recommended = 0
+        formData.value.is_recommended = false
       }
     }
 
