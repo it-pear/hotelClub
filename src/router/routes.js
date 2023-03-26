@@ -61,17 +61,61 @@ const routes = [
         path: '', 
         component: () => import('pages/admin/HomePage.vue') 
       },
-      { 
-        path: 'catalog', 
-        component: () => import('src/pages/admin/catalog/CatalogPage.vue') 
+      {
+        path: 'catalog',
+        children: [
+          {
+            path: '',
+            component: () => import('src/pages/admin/catalog/CatalogPage.vue')
+          },
+          {
+            path: 'create',
+            component: () => import('src/pages/admin/catalog/IdPage.vue')
+          },
+          {
+            path: ':id',
+            component: () => import('src/pages/admin/catalog/IdPage.vue')
+          }
+        ]
       },
-      { 
-        path: 'catalog/:id', 
-        component: () => import('src/pages/admin/catalog/IdPage.vue') 
+      {
+        path: 'services',
+        children: [
+          {
+            path: '',
+            component: () => import('src/pages/admin/services/CatalogServices.vue')
+          },
+          {
+            path: 'create',
+            component: () => import('src/pages/admin/services/CreateService.vue')
+          },
+          {
+            path: ':id',
+            component: () => import('src/pages/admin/services/IdService.vue')
+          }
+        ]
       },
-      { 
-        path: 'catalog/create', 
-        component: () => import('src/pages/admin/catalog/IdPage.vue') 
+      {
+        path: 'users',
+        children: [
+          {
+            path: '',
+            component: () => import('src/pages/admin/users/CatalogUsers.vue')
+          },
+          {
+            path: ':id',
+            component: () => import('src/pages/admin/users/IdUser.vue')
+          },
+        ]
+      },
+      {
+        path: 'params',
+        children: [
+          {
+            path: '',
+            component: () => import('src/pages/admin/params/Index.vue')
+          },
+        ]
       },
     ]
   },

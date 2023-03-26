@@ -14,11 +14,11 @@
       </div>
       <FilterCatalog />
     </div>
+    
     <q-table
       flat
       bordered
       :rows="rows"
-      :grid="tab"
       :columns="columns"
       row-key="name"
       :selected-rows-label="getSelectedString"
@@ -28,13 +28,6 @@
       class="my-table"
     >
       <template v-slot:top>
-        <q-tabs
-          v-model="tab"
-          class="text-primary"
-        >
-          <q-tab :name="false" icon="svguse:icons/allIcons.svg#list" />
-          <q-tab :name="true" icon="svguse:icons/allIcons.svg#kub" />
-        </q-tabs>
         <q-select
           v-model="visibleColumns"
           multiple
@@ -72,10 +65,10 @@
       </template>
 
       <template v-slot:bottom>
-        {{rows}}
+        
       </template>
     </q-table>
-    {{data}}
+    
   </q-page>
 </template>
 
@@ -118,12 +111,11 @@ export default defineComponent({
     const visibleColumns = ref(['custom', 'id', 'image', 'name', 'square', 'layout', 'finishing', 'price', 'city'])
     const selected = ref([])
 
-    const tab = ref(false)
-
     async function getPosts() {
       try {
         await postsApi.getAll().then(resp => {
           rows.value = resp
+          console.log(resp)
         })
       } catch (err) {
         console.log(err)
@@ -148,7 +140,6 @@ export default defineComponent({
       columns,
       selected,
       rows,
-      tab,
       visibleColumns,
       getSelectedString () {
         return selected.value.length === 0 ? '' : `${selected.value.length} объект${selected.value.length > 1 ? 's' : ''} выбран из ${rows.length}`

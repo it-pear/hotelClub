@@ -27,9 +27,9 @@
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <q-tabs align="left" active-color="primary">
         <q-route-tab to="/admin/catalog" label="Недвижимость" />
-        <q-route-tab to="/admin" label="Услуги" />
-        <q-route-tab to="/admin" label="Пользователи" />
-        <q-route-tab to="/admin" label="Общие параметры" />
+        <q-route-tab to="/admin/services" label="Услуги" />
+        <q-route-tab to="/admin/users" label="Пользователи" />
+        <q-route-tab to="/admin/params" label="Общие параметры" />
       </q-tabs>
     </q-drawer>
 

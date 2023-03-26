@@ -33,8 +33,9 @@
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Фото для галереи</div>
                 <q-uploader
-                  url="http://localhost:4444/upload"
-                  label="Перетащите или выберите изображение"
+                  @added="onMoreFileChange"
+                  accept=".jpg, .png, image/*"
+                  label="Перетащите или выберите несколько изображений"
                   style="max-width: 100%;width: 100%;"
                   multiple
                 />
@@ -275,6 +276,7 @@ export default defineComponent({
     });
     const value = ref(false)
     const images = ref(null)
+    const image = ref(null)
 
     const advantages = ref([])
     const categories = ref([])
@@ -292,6 +294,10 @@ export default defineComponent({
 
     function onFileChange(file) {
       formData.value.image = file[0]
+    }
+    function onMoreFileChange(file) {
+      formData.value.images = file
+      console.log(formData.value.images)
     }
 
     async function getData() {
@@ -351,6 +357,7 @@ export default defineComponent({
       layoutOptions,
       distances,
       onFileChange,
+      onMoreFileChange,
       createObject,
     };
   },

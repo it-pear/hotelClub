@@ -52,6 +52,10 @@ export const postsApi = {
     formData.append("region_id", data.region_id)
     formData.append("distance_id", data.distance_id)
 
+    for (let i = 0; i < data.images.length; i++) {
+      formData.append(`images[${i}]`, data.images[i])
+    }
+
     try {
       return httpClient({
         method: "post",
