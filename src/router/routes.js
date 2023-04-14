@@ -59,22 +59,22 @@ const routes = [
     children: [
       { 
         path: '', 
-        component: () => import('pages/admin/HomePage.vue') 
+        component: () => import('pages/admin/HomePage.vue'), 
       },
       {
         path: 'catalog',
         children: [
           {
             path: '',
-            component: () => import('src/pages/admin/catalog/CatalogPage.vue')
+            component: () => import('src/pages/admin/catalog/CatalogPage.vue'),
           },
           {
             path: 'create',
-            component: () => import('src/pages/admin/catalog/IdPage.vue')
+            component: () => import('src/pages/admin/catalog/IdPage.vue'),
           },
           {
             path: ':id',
-            component: () => import('src/pages/admin/catalog/IdPage.vue')
+            component: () => import('src/pages/admin/catalog/IdPage.vue'),
           }
         ]
       },

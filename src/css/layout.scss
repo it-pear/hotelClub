@@ -190,6 +190,9 @@ $lg-breakpoint: 1920px;
 }
 
 .auth-layout {
+  background: url(/images/fon.jpg);
+  background-size: cover;
+  background-position: center;
   .q-field {
     .q-field__focusable-action {
       right: 30px;

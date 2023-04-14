@@ -14,16 +14,16 @@ export const postsApi = {
             custom: '',
             image: el.image,
             name: el.name,
-            apartType: el.type.name,
+            apartType: el.type ? el.type.name : "",
             square: el.square,
             deadline: el.deadline,
-            layout: el.layout.name,
+            layout: el.layout ? el.layout.name : "",
             numberStoreys: el.storeys,
             finishing: el.finishing,
             price: el.price,
-            city: el.city.name,
-            area: el.region.name,
-            distanceSea: el.distance.name,
+            city: el.city ? el.city.name : "",
+            area: el.region ? el.region.name : "",
+            distanceSea: el.distance ? el.distance.name : "",
           }
         })
       });
@@ -76,7 +76,7 @@ export const postsApi = {
         return data
       })
     } catch (err) {
-      console.log(err)
+      throw err
     }
   }
 

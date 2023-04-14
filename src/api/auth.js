@@ -20,11 +20,11 @@ export const authApi = {
         return response
       })
     } catch (err) {
-      console.log(err)
+      throw err
     }
   },
 
-  doLogout(){
+  doLogout() {
     localStorage.removeItem('token')
   },
 
@@ -36,14 +36,14 @@ export const authApi = {
     try {
       return httpClient({
         method: "post",
-        url: `${url}/register`,
+        url: `${url}/registration`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       }).then(response => {
         return response
       })
     } catch (err) {
-      console.log(err)
+      throw err
     }
   }
 
