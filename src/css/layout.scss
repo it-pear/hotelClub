@@ -189,6 +189,15 @@ $lg-breakpoint: 1920px;
   }
 }
 
+.q-tab--active {
+  color: $primary;
+}
+
+.q-tab--active .q-tab__indicator {
+  display: none;
+}
+
+
 .auth-layout {
   background: url(/images/fon.jpg);
   background-size: cover;

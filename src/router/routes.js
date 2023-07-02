@@ -6,6 +6,9 @@ const routes = [
     children: [
       { 
         path: '', 
+        meta: {
+          requireAuth: false,
+        },
         component: () => import('pages/IndexPage.vue'),
         meta: {
           auth: ['admin']
@@ -13,6 +16,9 @@ const routes = [
       },
       { 
         path: '/catalog', 
+        meta: {
+          requireAuth: false,
+        },
         component: () => import('pages/CatalogPage.vue'),
         meta: {
           auth: ['admin']
@@ -20,6 +26,9 @@ const routes = [
       },
       { 
         path: '/single/:id', 
+        meta: {
+          requireAuth: false,
+        },
         component: () => import('pages/SinglePage.vue'),
         meta: {
           auth: ['admin']
@@ -27,6 +36,9 @@ const routes = [
       },
       { 
         path: '/services', 
+        meta: {
+          requireAuth: false,
+        },
         component: () => import('pages/ServicesPage.vue'),
         meta: {
           auth: ['admin']
@@ -34,6 +46,9 @@ const routes = [
       },
       { 
         path: '/about', 
+        meta: {
+          requireAuth: false,
+        },
         component: () => import('pages/AboutPage.vue'),
         meta: {
           auth: ['admin']
@@ -43,12 +58,23 @@ const routes = [
   },
 
   {
-    path: '/auth/',
+    path: '/',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
       { 
-        path: '', 
-        component: () => import('pages/auth/AuthPage.vue') 
+        path: '/register', 
+        meta: {
+          requireAuth: false,
+        },
+        component: () => import('pages/auth/AuthRegister.vue') 
+      },
+      { 
+        path: '/login', 
+        name: 'login',
+        meta: {
+          requireAuth: false,
+        },
+        component: () => import('pages/auth/AuthLogin.vue') 
       },
     ]
   },
@@ -59,10 +85,16 @@ const routes = [
     children: [
       { 
         path: '', 
+        meta: {
+          requireAuth: true,
+        },
         component: () => import('pages/admin/HomePage.vue'), 
       },
       {
         path: 'catalog',
+        meta: {
+          requireAuth: true,
+        },
         children: [
           {
             path: '',
@@ -80,6 +112,9 @@ const routes = [
       },
       {
         path: 'services',
+        meta: {
+          requireAuth: true,
+        },
         children: [
           {
             path: '',
@@ -97,6 +132,9 @@ const routes = [
       },
       {
         path: 'users',
+        meta: {
+          requireAuth: true,
+        },
         children: [
           {
             path: '',
@@ -110,6 +148,9 @@ const routes = [
       },
       {
         path: 'params',
+        meta: {
+          requireAuth: true,
+        },
         children: [
           {
             path: '',

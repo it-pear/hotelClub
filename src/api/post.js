@@ -8,27 +8,18 @@ export const postsApi = {
     try {
       return httpClient.get(`${url}/getall`)
       .then(({ data }) => {
-        return data = data.map(el => {
-          return {
-            id: el.id,
-            custom: '',
-            image: el.image,
-            name: el.name,
-            apartType: el.type ? el.type.name : "",
-            square: el.square,
-            deadline: el.deadline,
-            layout: el.layout ? el.layout.name : "",
-            numberStoreys: el.storeys,
-            finishing: el.finishing,
-            price: el.price,
-            city: el.city ? el.city.name : "",
-            area: el.region ? el.region.name : "",
-            distanceSea: el.distance ? el.distance.name : "",
-          }
-        })
-      });
+        return data
+      })
     } catch(err) {
       console.log(err)
+    }
+  },
+
+  async getRecommendedPosts() {
+    try {
+      const resp = await httpClient.get(`${url}/getall/recommended`)
+    } catch (err) {
+      throw err
     }
   },
 
@@ -79,6 +70,5 @@ export const postsApi = {
       throw err
     }
   }
-
 
 }

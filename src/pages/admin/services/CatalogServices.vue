@@ -19,9 +19,6 @@
       :rows="rows"
       :columns="columns"
       row-key="name"
-      :selected-rows-label="getSelectedString"
-      selection="multiple"
-      v-model:selected="selected"
       class="my-table"
     >
       <template v-slot:body-cell-name="props">
@@ -31,7 +28,7 @@
       </template>
       <template v-slot:body-cell-image="props">
         <q-td :props="props" class="td-image">
-          <img :src="`http://62.217.177.152/${props.row.image}`" alt="">
+          <img :src="`http://127.0.0.1:8000/${props.row.image}`" alt="">
         </q-td>
       </template>
       <template v-slot:body-cell-custom="props">
@@ -67,71 +64,51 @@
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent, onMounted } from 'vue'
+<script setup>
+import { ref, onMounted } from 'vue'
 import { servicesApi } from 'src/api/services'
-import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog'
  
-export default defineComponent({
-  components: {
-    FilterCatalog,
+const columns = ref([
+  {
+    name: 'id',
+    required: true,
+    label: 'ID',
+    align: 'left',
+    field: 'id',
+    sortable: true
   },
-  setup() {
-    const columns = ref([
-      {
-        name: 'id',
-        required: true,
-        label: 'ID',
-        align: 'left',
-        field: 'id',
-        sortable: true
-      },
-      {name: 'image',align: 'left',label: 'Картинка',field: 'image',sortable: false},
-      {name: 'name',align: 'left',label: 'Название',field: 'name',sortable: false},
-      {name: 'prev_description',align: 'left',label: 'Описание',field: 'prev_description',sortable: false},
-      {name: 'price',align: 'left',label: 'Цена',field: 'price',sortable: true},
-      {name: 'custom',align: 'left',label: '',field: 'custom',sortable: false}
-    ]);
+  {name: 'image',align: 'left',label: 'Картинка',field: 'image',sortable: false},
+  {name: 'name',align: 'left',label: 'Название',field: 'name',sortable: false},
+  {name: 'prev_description',align: 'left',label: 'Описание',field: 'prev_description',sortable: false},
+  {name: 'price',align: 'left',label: 'Цена',field: 'price',sortable: true},
+  {name: 'custom',align: 'left',label: '',field: 'custom',sortable: false}
+]);
 
-    const rows = ref([])
+const rows = ref([])
 
-    const selected = ref([])
-
-    async function getServices() {
-      try {
-        await servicesApi.getAll().then(resp => {
-          rows.value = resp
-          console.log(resp)
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    async function delService(id) {
-      try {
-        await servicesApi.delService(id).then(resp => {
-          rows.value = rows.value.filter((item) => item.id !== id)
-          console.log(resp)
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    onMounted(() => {
-      getServices()
+async function getServices() {
+  try {
+    await servicesApi.getAll().then(resp => {
+      rows.value = resp
+      console.log(resp)
     })
+  } catch (err) {
+    console.log(err)
+  }
+}
+async function delService(id) {
+  try {
+    await servicesApi.delService(id).then(resp => {
+      rows.value = rows.value.filter((item) => item.id !== id)
+      console.log(resp)
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-    return {
-      columns,
-      selected,
-      rows,
-      getSelectedString () {
-        return selected.value.length === 0 ? '' : `${selected.value.length} объект${selected.value.length > 1 ? 's' : ''} выбран из ${rows.length}`
-      },
-      getServices,
-      delService,
-    }
-  },
+onMounted(() => {
+  getServices()
 })
+
 </script>

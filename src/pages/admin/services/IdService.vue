@@ -34,7 +34,7 @@
             <div class="col-12 q-pr-sm q-mb-lg">
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Заменить изображение</div>
-                <img :src="`http://62.217.177.152/${formData.image}`" alt="" style="max-width: 300px;">
+                <img :src="`http://127.0.0.1:8000/${formData.image}`" alt="" style="max-width: 300px;">
                 <q-uploader
                   @added="onFileChange"
                   accept=".jpg, .png, image/*"

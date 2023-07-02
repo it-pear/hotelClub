@@ -50,14 +50,22 @@
               label="Войти" 
               icon="svguse:icons/allIcons.svg#phone" 
               class="q-ml-auto btn-reverse-il-mb mb-visible" 
-              to="/auth"
+              to="/login"
             />
+            <q-btn 
+              unelevated rounded color="primary" 
+              label="Войти" 
+              icon="svguse:icons/allIcons.svg#phone" 
+              class="q-ml-auto btn-reverse-il-mb mb-visible" 
+              to="/login"
+            />
+
             <q-btn 
               unelevated rounded color="primary" 
               label="Войти" 
               icon="svguse:icons/allIcons.svg#user" 
               class="q-ml-sm q-ml-auto btn-login btn-reverse-il-mb" 
-              to="/auth"
+              to="/login"
             />
             
             <q-btn 
@@ -137,35 +145,30 @@
   </q-layout>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup () {
-    const rightDrawerOpen = ref(false)
+const rightDrawerOpen = ref(false)
 
-    const routes = ref([
-      {
-        name: 'Каталог недвижимости',
-        link: '/catalog'
-      },
-      {
-        name: 'Услуги',
-        link: '/services'
-      },
-      {
-        name: 'О нас / Контакты',
-        link: 'about'
-      },
-    ])
+const routes = ref([
+  {
+    name: 'Каталог недвижимости',
+    link: '/catalog'
+  },
+  {
+    name: 'Услуги',
+    link: '/services'
+  },
+  {
+    name: 'О нас / Контакты',
+    link: 'about'
+  },
+])
 
-    return {
-      routes,
-      rightDrawerOpen,
-      toggleRightDrawer () {
-        rightDrawerOpen.value = !rightDrawerOpen.value
-      }
-    }
-  }
+const toggleRightDrawer = () => {
+  rightDrawerOpen.value = !rightDrawerOpen.value
 }
+
+
+    
 </script>

@@ -79,46 +79,38 @@
   </div>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
+<script setup>
+  import { ref } from 'vue'
 
-export default defineComponent({
-  setup() {
-    const deals = ref([
-      {
-        
-      },
-      {
+  const deals = ref([
+    {
+      
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-      {
+    },
+    {
 
-      },
-    ])
-    const current = ref(2)
+    },
+  ])
+  const current = ref(2)
 
-    return {
-      deals,
-      current
-    }
-  },
-})
 </script>

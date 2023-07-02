@@ -19,6 +19,7 @@
           color="white" 
           class="q-ml-auto" 
           padding="4px 10px"
+          @click="onLogout"
         />
       </q-toolbar>
 
@@ -40,19 +41,18 @@
   </q-layout>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
+import { authApi } from "src/api/auth"
 
-export default {
-  setup () {
-    const leftDrawerOpen = ref(false)
+const leftDrawerOpen = ref(false)
 
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value
 }
+
+const onLogout = async () => {
+  await authApi.doLogout()
+}
+
 </script>

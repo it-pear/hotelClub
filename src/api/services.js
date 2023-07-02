@@ -8,7 +8,7 @@ export const servicesApi = {
     try {
       return httpClient.get(`${url}/getall`)
       .then(({ data }) => {
-        return data = data.map(el => {
+        return data = data.data.map(el => {
           return {
             id: el.id,
             custom: '',
@@ -92,6 +92,4 @@ export const servicesApi = {
       console.log(err)
     }
   }
-
-
 }
