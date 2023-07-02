@@ -198,80 +198,69 @@
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent, onMounted } from "vue";
+<script setup>
+import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from 'vue-router'
 import { useQuasar } from "quasar";
 import { servicesApi } from 'src/api/services'
 
-export default defineComponent({
-  setup() {
-    const $q = useQuasar()
-    const route = useRoute()
-    const router = useRouter()
+const $q = useQuasar()
+const route = useRoute()
+const router = useRouter()
 
-    const formData = ref({
-      name: '',
-      prev_description: '',
-      description: '',
-      image: '',
-      price: '',
-      is_recommended: false,
-    });
+const formData = ref({
+  name: '',
+  prev_description: '',
+  description: '',
+  image: '',
+  price: '',
+  is_recommended: false,
+})
 
-    const idService = ref(route.params.id)
+const idService = ref(route.params.id)
 
-    function onFileChange(file) {
-      formData.value.image = file[0]
-    }
+function onFileChange(file) {
+  formData.value.image = file[0]
+}
 
-    async function getService() {
-      try {
-        await servicesApi.getById(idService.value).then(resp => {
-          formData.value = resp
-          if (formData.value.is_recommended === 0) {
-            formData.value.is_recommended = false
-          } else {
-            formData.value.is_recommended = true
-          }
-          console.log(resp)
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    async function updateObject() {
-
-      if (formData.value.is_recommended === true) {
-        formData.value.is_recommended = 1
-      } else {
-        formData.value.is_recommended = 0
-      }
-
-      try {
-        await servicesApi.updateService(formData.value).then(resp => {
-          console.log(resp)
-          router.push('/admin/services')
-        })
-      } catch (err) {
-        console.log(err)
-      } finally {
+async function getService() {
+  try {
+    await servicesApi.getById(idService.value).then(resp => {
+      formData.value = resp
+      if (formData.value.is_recommended === 0) {
         formData.value.is_recommended = false
+      } else {
+        formData.value.is_recommended = true
       }
-    }
-
-    onMounted(() => {
-      getService()
+      console.log(resp)
     })
+  } catch (err) {
+    console.log(err)
+  }
+}
 
+async function updateObject() {
 
-    return {
-      idService,
-      formData,
-      onFileChange,
-      updateObject,
-    };
-  },
-});
+  if (formData.value.is_recommended === true) {
+    formData.value.is_recommended = 1
+  } else {
+    formData.value.is_recommended = 0
+  }
+
+  try {
+    await servicesApi.updateService(formData.value).then(resp => {
+      console.log(resp)
+      router.push('/admin/services')
+    })
+  } catch (err) {
+    console.log(err)
+  } finally {
+    formData.value.is_recommended = false
+  }
+}
+
+onMounted(() => {
+  getService()
+})
+
 </script>

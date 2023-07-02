@@ -13,6 +13,7 @@
         />
       </div>
     </div>
+    
     <q-table
       flat
       bordered
@@ -23,7 +24,7 @@
     >
       <template v-slot:body-cell-name="props">
         <q-td :props="props" class="td-name">
-          <div style="max-width: 10vw; overflow: hidden;">{{props.row.name}}</div>
+          <div>{{props.row.name}}</div>
         </q-td>
       </template>
       <template v-slot:body-cell-image="props">
@@ -77,12 +78,12 @@ const columns = ref([
     field: 'id',
     sortable: true
   },
-  {name: 'image',align: 'left',label: 'Картинка',field: 'image',sortable: false},
-  {name: 'name',align: 'left',label: 'Название',field: 'name',sortable: false},
-  {name: 'prev_description',align: 'left',label: 'Описание',field: 'prev_description',sortable: false},
-  {name: 'price',align: 'left',label: 'Цена',field: 'price',sortable: true},
-  {name: 'custom',align: 'left',label: '',field: 'custom',sortable: false}
-]);
+  {name: 'image', align: 'left', label: 'Картинка', field: 'image', sortable: false},
+  {name: 'name', align: 'left', label: 'Название', field: 'name', sortable: false},
+  {name: 'prev_description', align: 'left', label: 'Описание', field: 'prev_description', sortable: false},
+  {name: 'price', align: 'left', label: 'Цена', field: 'price', sortable: true},
+  {name: 'custom', align: 'left', label: '', field: 'custom', sortable: false}
+])
 
 const rows = ref([])
 
@@ -94,6 +95,7 @@ async function getServices() {
     })
   } catch (err) {
     console.log(err)
+    alertError()
   }
 }
 async function delService(id) {
@@ -101,10 +103,18 @@ async function delService(id) {
     await servicesApi.delService(id).then(resp => {
       rows.value = rows.value.filter((item) => item.id !== id)
       console.log(resp)
+      alertError()
     })
   } catch (err) {
     console.log(err)
   }
+}
+
+const alertError = () => {
+  $q.notify({
+    color: "negative",
+    message: "Произошла ошибка, попробуйте позже",
+  })
 }
 
 onMounted(() => {

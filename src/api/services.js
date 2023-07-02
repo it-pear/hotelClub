@@ -65,7 +65,7 @@ export const servicesApi = {
     formData.append("name", data.name)
     formData.append("prev_description", data.prev_description)
     formData.append("description", data.description)
-    formData.append("image", data.image)
+    if (typeof(data.image) === 'object') formData.append("image", data.image)
     formData.append("price", data.price)
     formData.append("is_recommended", data.is_recommended)
 

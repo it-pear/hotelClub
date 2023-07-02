@@ -159,3 +159,13 @@
     padding-bottom: 15px;
   }
 }
+
+.image-section {
+  position: relative;
+  .q-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.3);
+  }
+}

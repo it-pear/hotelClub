@@ -187,56 +187,55 @@
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent } from "vue";
+<script setup>
+import { ref } from "vue"
 import { useRouter } from 'vue-router'
 import { useQuasar } from "quasar";
 import { servicesApi } from 'src/api/services'
 
-export default defineComponent({
-  setup() {
-    const $q = useQuasar()
-    const router = useRouter()
+const $q = useQuasar()
+const router = useRouter()
 
-    const formData = ref({
-      name: '',
-      prev_description: '',
-      description: '',
-      image: '',
-      price: '',
-      is_recommended: false,
-    });
+const formData = ref({
+  name: '',
+  prev_description: '',
+  description: '',
+  image: '',
+  price: '',
+  is_recommended: false,
+})
 
 
-    function onFileChange(file) {
-      formData.value.image = file[0]
-    }
+function onFileChange(file) {
+  formData.value.image = file[0]
+}
 
-    async function createObject() {
+async function createObject() {
 
-      if (formData.value.is_recommended === true) {
-        formData.value.is_recommended = 1
-      } else {
-        formData.value.is_recommended = 0
-      }
+  if (formData.value.is_recommended === true) {
+    formData.value.is_recommended = 1
+  } else {
+    formData.value.is_recommended = 0
+  }
 
-      try {
-        await servicesApi.createService(formData.value).then(resp => {
-          console.log(resp)
-          router.push('/admin/services')
-        })
-      } catch (err) {
-        console.log(err)
-      } finally {
-        formData.value.is_recommended = false
-      }
-    }
+  try {
+    await servicesApi.createService(formData.value).then(resp => {
+      console.log(resp)
+      router.push('/admin/services')
+    })
+  } catch (err) {
+    console.log(err)
+    alertError()
+  } finally {
+    formData.value.is_recommended = false
+  }
+}
 
-    return {
-      formData,
-      onFileChange,
-      createObject,
-    };
-  },
-});
+const alertError = () => {
+  $q.notify({
+    color: "negative",
+    message: "Произошла ошибка, попробуйте позже",
+  })
+}
+
 </script>

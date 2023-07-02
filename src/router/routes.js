@@ -98,15 +98,15 @@ const routes = [
         children: [
           {
             path: '',
-            component: () => import('src/pages/admin/catalog/CatalogPage.vue'),
+            component: () => import('src/pages/admin/catalog/CatalogPost.vue'),
           },
           {
             path: 'create',
-            component: () => import('src/pages/admin/catalog/IdPage.vue'),
+            component: () => import('src/pages/admin/catalog/CreatePost.vue'),
           },
           {
             path: ':id',
-            component: () => import('src/pages/admin/catalog/IdPage.vue'),
+            component: () => import('src/pages/admin/catalog/IdPost.vue'),
           }
         ]
       },
