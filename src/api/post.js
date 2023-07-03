@@ -45,6 +45,7 @@ export const postsApi = {
     formData.append("square", data.square)
     formData.append("deadline", data.deadline)
     formData.append("storeys", data.storeys)
+    formData.append("sale", data.sale)
     formData.append("finishing", data.finishing)
     formData.append("layout_id", data.layout_id)
     if (data.type_id !== null) {
@@ -81,6 +82,7 @@ export const postsApi = {
     formData.append("price", data.price)
     formData.append("is_recommended", data.is_recommended)
     formData.append("square", data.square)
+    formData.append("sale", data.sale)
     if (data.deadline) formData.append("deadline", data.deadline)
     formData.append("storeys", data.storeys)
     formData.append("finishing", data.finishing)

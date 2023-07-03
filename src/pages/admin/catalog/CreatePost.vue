@@ -15,6 +15,25 @@
               (val) => (val && val.length > 0) || 'Поле не должно быть пустым',
             ]"
           />
+          <q-select
+            filled
+            v-model="formData.sale"
+            :options="[
+              {
+                value: 'sale',
+                label: 'Продажа'
+              },
+              {
+                value: 'rent',
+                label: 'Аренда'
+              },
+            ]"
+            emit-value
+            map-options
+            label="Направленность недвижимости"
+            class="q-mb-md"
+          />
+
           <q-toggle v-model="formData.is_recommended"   label="Рекомендуемый товар" class="q-mb-md" />
 
           <div class="row">
@@ -267,6 +286,7 @@ const formData = ref({
   city: [],
   city_id: null,
   region_id: null,
+  sale: 'sale',
   avatar: null,
   image: null,
   is_recommended: false,
