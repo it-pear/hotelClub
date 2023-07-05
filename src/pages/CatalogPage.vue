@@ -2,7 +2,7 @@
   <q-page class="catalog">
     <div class="container row">
       <div class="col-12 col-md-3 sidebar-col">
-        <SideBar />
+        <SideBar @getPosts="getPosts" />
       </div>
       <div class="col-12 col-md-9">
         <CatalogSec />
@@ -12,16 +12,15 @@
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
+<script setup>
+import { ref } from 'vue'
 import SideBar from 'src/components/pages/catalog/SideBar'
 import CatalogSec from 'src/components/pages/catalog/CatalogSec'
 
-export default defineComponent({
-  name: 'CatalogPage',
-  components: {
-    SideBar,
-    CatalogSec,
-  }
-})
+const posts = ref([])
+
+const getPosts = (val) => {
+  posts.value = val
+}
+
 </script>

@@ -53,7 +53,7 @@
               <div class="row">
                 <div class="col q-pr-sm">
                   <q-input
-                    v-model="formData.priceTo"
+                    v-model="formData.price_from"
                     label="Цена от"
                     lazy-rules
                     type="number"
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col q-pl-sm">
                   <q-input
-                    v-model="formData.PriceFor"
+                    v-model="formData.price_to"
                     label="Цена до"
                     lazy-rules
                     type="number"
@@ -105,7 +105,7 @@
             <q-card-section class="q-pt-none">
               
               <q-select
-                v-model="formData.city"
+                v-model="city"
                 :options="citys"
                 label="Выберите город"
                 emit-value
@@ -114,10 +114,10 @@
               />
               <q-select
                 v-model="formData.region"
-                :options="formData.city?.region"
+                :options="city?.region"
                 label="Выберите район"
                 multiple
-                :disable="!formData.city"
+                :disable="!city"
                 emit-value
                 map-options
                 option-value="id"
@@ -158,7 +158,7 @@
             </q-card-section>
           </q-card>
         </q-expansion-item>
-        
+
         <q-expansion-item
           style="border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.12) !important;"
           icon="explore"
@@ -175,6 +175,8 @@
                 multiple
                 emit-value
                 map-options
+                option-value="id"
+                option-label="name"
               >
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
@@ -211,17 +213,19 @@
               </q-select>
 
               <q-select
-                v-model="formData.type"
-                :options="formData.typeOptions"
+                v-model="formData.types"
+                :options="types"
                 label="Тип квартиры"
                 multiple
                 emit-value
                 map-options
+                option-value="id"
+                option-label="name"
               >
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.label" />
+                      <q-item-label v-html="opt.name" />
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -254,21 +258,27 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { pagesApi } from 'src/api/pages'
+import { postsApi } from 'src/api/post'
+
+const emit = defineEmits(['getPosts'])
 
 const formData = ref({
   sale: null,
   advantages: null,
   layouts: null,
   properties: null,
-  city: null,
   region: null,
   distances: null,
+  page: 1,
+  per_page: 10,
+  types: null,
 
   id: '',
-  priceTo: '',
-  PriceFor: '',
+  price_to: '',
+  price_from: '',
 })
 
+const city = ref(null)
 const citys = ref(null)
 const categories = ref(null)
 const layouts = ref(null)
@@ -294,8 +304,32 @@ async function getData() {
   } 
 }
 
+const onSubmit = async () => {
+  const resp = await postsApi.getFilterPosts(formData.value)
+  emit('getPosts', resp)
+}
+const onReset = async () => {
+  formData.value = {
+    sale: null,
+    advantages: null,
+    layouts: null,
+    properties: null,
+    region: null,
+    distances: null,
+    page: 1,
+    per_page: 10,
+    types: null,
+
+    id: '',
+    price_to: '',
+    price_from: '',
+  }
+  onSubmit()
+}
+
 onMounted(() => {
   getData()
+  onSubmit()
 })
 
 </script>

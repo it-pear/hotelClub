@@ -114,6 +114,29 @@
             class="q-mb-lg"
           />
 
+          <q-select
+            filled
+            v-model="formData.advantages"
+            :options="advantages"
+            label="Преимущества"
+            multiple
+            emit-value
+            option-value="id"
+            option-label="name"
+            map-options
+          >
+            <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
+              <q-item v-bind="itemProps">
+                <q-item-section>
+                  <q-item-label v-html="opt.name" />
+                </q-item-section>
+                <q-item-section side>
+                  <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-select>
+
         </div>
 
         <div class="col-12 col-lg-6 q-pl-md">
@@ -253,6 +276,30 @@
             class="q-mb-lg"
           />
 
+          <q-select
+            filled
+            v-model="formData.properties"
+            :options="properties"
+            label="Инфраструктура"
+            multiple
+            emit-value
+            map-options
+            option-value="id"
+            option-label="name"
+            class="q-mb-lg"
+          >
+            <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
+              <q-item v-bind="itemProps">
+                <q-item-section>
+                  <q-item-label v-html="opt.name" />
+                </q-item-section>
+                <q-item-section side>
+                  <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-select>
+
         </div>
       </div>
 
@@ -318,6 +365,8 @@ const formData = ref({
   image: null,
   is_recommended: false,
   distance_id: null,
+  properties: null,
+  advantages: null
 })
 
 

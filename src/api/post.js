@@ -2,6 +2,22 @@ import httpClient from "./httpClient.js";
 
 const url = 'posts'
 
+function buildQuery(params) {
+  let queryParams = new URLSearchParams()
+  for (let key in params) {
+    let value = params[key]
+    if (key === 'id' && value !== null && value !== '') {
+      value = Number(value)
+    }
+    if (Array.isArray(value)) { // Если значение является массивом
+      value.forEach(val => queryParams.append(`${key}[]`, val))
+    } else if (value !== null && value !== '') { // Если значение не null и не пустая строка
+      queryParams.append(key, value)
+    }
+  }
+  return queryParams.toString()
+}
+
 export const postsApi = {
 
   getAll() {
@@ -12,6 +28,16 @@ export const postsApi = {
       })
     } catch(err) {
       console.log(err)
+    }
+  },
+
+  async getFilterPosts(fields) {
+    let query = buildQuery(fields)
+    try {
+      const resp = await httpClient.get(`${url}/getparams/get?${query}`)
+      return resp
+    } catch (err) {
+      throw err
     }
   },
 
@@ -58,6 +84,12 @@ export const postsApi = {
     for (let i = 0; i < data.images.length; i++) {
       if (typeof(data.image) === 'object') formData.append(`images[${i}]`, data.images[i])
     }
+    for (let i = 0; i < data.properties.length; i++) {
+      if (data.properties.length) formData.append(`properties[${i}]`, data.properties[i])
+    }
+    for (let i = 0; i < data.advantages.length; i++) {
+      if (data.advantages.length) formData.append(`advantages[${i}]`, data.advantages[i])
+    }
 
     try {
       return httpClient({
@@ -98,6 +130,12 @@ export const postsApi = {
       for (let i = 0; i < images.length; i++) {
         formData.append(`images[${i}]`, images[i])
       }
+    }
+    for (let i = 0; i < data.properties.length; i++) {
+      if (data.properties.length) formData.append(`properties[${i}]`, data.properties[i])
+    }
+    for (let i = 0; i < data.advantages.length; i++) {
+      if (data.advantages.length) formData.append(`advantages[${i}]`, data.advantages[i])
     }
     
 
