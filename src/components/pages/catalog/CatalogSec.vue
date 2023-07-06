@@ -71,21 +71,35 @@
     <div class="pagination-section">
       <q-pagination
         v-model="current"
-        max="5"
+        :max="pagination.last_page"
         direction-links
+        @update:model-value="updatePag"
+        v-if="pagination && pagination.last_page > 1"
       />
+
     </div>
     
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
 
   const props = defineProps({
-    posts: Array
+    posts: Array,
+    pagination: Object
   })
 
-  const current = ref(2)
+  const emit = defineEmits(['updatePagination'])
 
+  const updatePag = () => {
+    emit('updatePagination', current.value)
+  }
+
+  const current = ref(props.pagination?.current_page)
+
+  watch(() => props.pagination, (newVal) => {
+    current.value = newVal?.current_page
+  }, { immediate: true })
+  
 </script>

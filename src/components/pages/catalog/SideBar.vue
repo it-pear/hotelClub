@@ -6,7 +6,7 @@
 
     <q-card-section class="q-pt-none" style="padding-left: 0;padding-right: 0;">
       <q-form
-        @submit="onSubmit"
+        @submit="getPosts"
         @reset="onReset"
         class="q-gutter-md"
       >
@@ -82,7 +82,7 @@
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.name" />
+                      <q-item-label>{{ opt.name }}</q-item-label>
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -135,7 +135,7 @@
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.name" />
+                      <q-item-label>{{ opt.name }}</q-item-label>
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -169,7 +169,7 @@
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.name" />
+                      <q-item-label>{{ opt.name }}</q-item-label>
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -191,7 +191,7 @@
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.name" />
+                      <q-item-label>{{ opt.name }}</q-item-label>
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -213,7 +213,7 @@
                 <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                   <q-item v-bind="itemProps">
                     <q-item-section>
-                      <q-item-label v-html="opt.name" />
+                      <q-item-label>{{ opt.name }}</q-item-label>
                     </q-item-section>
                     <q-item-section side>
                       <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -244,13 +244,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { pagesApi } from 'src/api/pages'
 import { postsApi } from 'src/api/post'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
+
+const props = defineProps({
+  updatePagination: Number
+})
 
 const emit = defineEmits(['getPosts'])
 
@@ -263,6 +267,7 @@ const defaultData = {
   distances: null,
   page: 1,
   per_page: 10,
+  last_page: null,
   types: null,
   id: '',
   price_to: '',
@@ -276,7 +281,6 @@ const citys = ref(null)
 const categories = ref(null)
 const layouts = ref(null)
 const types = ref(null)
-const regions = ref(null)
 const distances = ref(null)
 const advantages = ref(null)
 const properties = ref(null)
@@ -297,13 +301,18 @@ async function getData() {
   } 
 }
 
-const onSubmit = async () => {
+const getPosts = async () => {
   const resp = await postsApi.getFilterPosts(formData.value)
-  emit('getPosts', resp)
-  // Обновите URL с новыми параметрами после каждого запроса
-  router.replace({ query: formData.value });
+  emit('getPosts', {posts: resp.data, pagination: resp.pagination})
+  router.replace({ query: formData.value })
 }
 
+watch(() => props.updatePagination, (newVal, oldVal) => {
+  if (Number(formData.value.page) !== newVal) {
+    formData.value.page = newVal
+    getPosts()
+  }
+})
 
 const onReset = async () => {
   formData.value = {
@@ -321,7 +330,7 @@ const onReset = async () => {
     price_to: '',
     price_from: '',
   }
-  onSubmit()
+  getPosts()
 }
 
 onMounted(() => {
@@ -332,7 +341,7 @@ onMounted(() => {
   }
 
   getData()
-  onSubmit()
+  getPosts()
 })
 
 </script>
