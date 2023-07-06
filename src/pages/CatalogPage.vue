@@ -5,7 +5,7 @@
         <SideBar @getPosts="getPosts" />
       </div>
       <div class="col-12 col-md-9">
-        <CatalogSec />
+        <CatalogSec :posts="posts" v-if="posts" />
       </div>
     </div>
 

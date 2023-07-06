@@ -116,24 +116,12 @@
                 v-model="formData.region"
                 :options="city?.region"
                 label="Выберите район"
-                multiple
                 :disable="!city"
                 emit-value
                 map-options
                 option-value="id"
                 option-label="name"
-              >
-                <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
-                  <q-item v-bind="itemProps">
-                    <q-item-section>
-                      <q-item-label v-html="opt.name" />
-                    </q-item-section>
-                    <q-item-section side>
-                      <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
-                    </q-item-section>
-                  </q-item>
-                </template>
-              </q-select>
+              />
               <q-select
                 v-model="formData.distances"
                 :options="distances"
@@ -259,10 +247,14 @@
 import { ref, onMounted } from 'vue'
 import { pagesApi } from 'src/api/pages'
 import { postsApi } from 'src/api/post'
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
 
 const emit = defineEmits(['getPosts'])
 
-const formData = ref({
+const defaultData = {
   sale: null,
   advantages: null,
   layouts: null,
@@ -272,11 +264,12 @@ const formData = ref({
   page: 1,
   per_page: 10,
   types: null,
-
   id: '',
   price_to: '',
   price_from: '',
-})
+}
+
+const formData = ref({ ...defaultData })
 
 const city = ref(null)
 const citys = ref(null)
@@ -307,7 +300,11 @@ async function getData() {
 const onSubmit = async () => {
   const resp = await postsApi.getFilterPosts(formData.value)
   emit('getPosts', resp)
+  // Обновите URL с новыми параметрами после каждого запроса
+  router.replace({ query: formData.value });
 }
+
+
 const onReset = async () => {
   formData.value = {
     sale: null,
@@ -328,6 +325,12 @@ const onReset = async () => {
 }
 
 onMounted(() => {
+  for (let key in defaultData) {
+    if (route.query[key]) {
+      formData.value[key] = route.query[key]
+    }
+  }
+
   getData()
   onSubmit()
 })

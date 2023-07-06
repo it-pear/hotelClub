@@ -3,13 +3,13 @@
     <div class="row cards">
       <div 
         class="col-xs-12 col-md-4 col-4 card-sec"
-        v-for="item in deals"
-        :key="item"
+        v-for="item in posts"
+        :key="item.id"
       >
         <q-card class="my-card" flat bordered>
-          <q-img src="https://primeinvest.group/wp-content/uploads/2022/12/d2-1.jpg">
+          <q-img :src="`http://127.0.0.1:8000/${item.image}`" height="210px">
             <div class="absolute-bottom text-subtitle2 text-center" style="padding: 5px 0;">
-              Новостройка
+              {{ item.category?.name }}
             </div>
           </q-img>
           
@@ -19,16 +19,16 @@
               color="primary"
               class="absolute"
               style="top: 0; right: 12px; transform: translateY(-50%);"
-              label="1+1"
+              :label="item.layout?.name"
             />
 
             <div class="column no-wrap items-start">
               <div class="text-h6 ellipsis">
-                Cafe Basilico
+                {{ item.name }}
               </div>
               <div class="text-grey text-caption row no-wrap items-center">
                 <q-icon name="place" />
-                Аланья, Город
+                {{ item.city?.name }}, {{ item.region?.name }}
               </div>
             </div>
 
@@ -37,14 +37,14 @@
 
           <q-card-section class="q-pt-none row">
             <div class="text-subtitle1 text-weight-bold col-12">
-              $ 100 000
+              € {{ item.price }}
             </div>
             <div class="row items-center row-captions" style="width: 100%;">
               <div class="text-caption text-grey col-6">
-                Площадь 55 м<sup>2</sup>
+                Площадь {{ item.square }} м<sup>2</sup>
               </div>
               <div class="text-caption row-captions text-grey col-6">
-                До моря 150 м.
+                До моря {{ item.distance?.name }} м.
               </div>
             </div>
             
@@ -62,7 +62,7 @@
               color="primary" 
               class="q-ml-auto" 
               padding="4px 10px"
-              to="/single/1"
+              :to="`/single/${item.id}`"
             />
           </q-card-actions>
         </q-card>
@@ -82,35 +82,10 @@
 <script setup>
   import { ref } from 'vue'
 
-  const deals = ref([
-    {
-      
-    },
-    {
+  const props = defineProps({
+    posts: Array
+  })
 
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-    {
-
-    },
-  ])
   const current = ref(2)
 
 </script>

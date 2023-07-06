@@ -35,7 +35,7 @@ export const postsApi = {
     let query = buildQuery(fields)
     try {
       const resp = await httpClient.get(`${url}/getparams/get?${query}`)
-      return resp
+      return resp.data
     } catch (err) {
       throw err
     }
