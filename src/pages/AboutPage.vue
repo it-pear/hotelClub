@@ -11,7 +11,7 @@
             <q-card-section class="info">
               <div class="text-overline">Турция, Аланья</div>
               <div class="text-h5 q-mt-sm q-mb-xs text-weight-medium">
-                Краснодарский край, г. Геленджик, ул. Пушкина 44
+                ул. Название улицы д. 65 кв. 45
               </div>
               <div class="row work-sec">
                 <div class="col-6 col-md-4 item">
@@ -24,8 +24,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Телефоны</div>
-                  <div class="subtitle">8-(999) 999-99-99</div>
-                  <div class="subtitle">8-(999) 999-99-99</div>
+                  <div class="subtitle">+90533 502 4004</div>
+                  <div class="subtitle">+90533 502 4004</div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Мессенджеры</div>
@@ -43,52 +43,23 @@
         </q-card>
       </div>
 
-      <h2 class="text-h3 text-weight-medium text-center">Наша команда</h2>
-      <div class="row team-sec">
+      <TeamSec />
 
-        <q-card class="my-card col-4" flat bordered>
-          <img src="https://oir.mobi/uploads/posts/2019-12/1576865863_1-1.jpg">
-          <q-card-section>
-            <div class="text-h6">Татьяна Павловна</div>
-            <div class="text-subtitle2">Менеджер</div>
-          </q-card-section>
-        </q-card>
-
-        <q-card class="my-card col-4" flat bordered>
-          <img src="https://img.freepik.com/premium-photo/a-young-guy-sits-at-a-table-in-the-office-and-works-at-a-computer-brunette-sits-at-a-computer-and-works-with-a-cup-of-coffee-in-her-hands_85574-14429.jpg">
-          <q-card-section>
-            <div class="text-h6">Имя Фамилия</div>
-            <div class="text-subtitle2">Риелтор</div>
-          </q-card-section>
-        </q-card>
-
-        <q-card class="my-card col-4" flat bordered>
-          <img src="https://cdn-st3.rtr-vesti.ru/vh/pictures/hd/325/404/2.jpg">
-          <q-card-section>
-            <div class="text-h6">Павлик</div>
-            <div class="text-subtitle2">It гигант</div>
-          </q-card-section>
-        </q-card>
-      </div>
-      
-      <FormPerson />
+      <FormPerson class="q-mt-lg" />
     </div>
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
+<script setup>
+import { ref, onMounted } from 'vue'
 import FormPerson from 'src/components/FormPerson'
+import DocumentsSec from 'src/components/pages/home/DocumentsSec'
 
-export default defineComponent({
-  components: {
-    FormPerson
-  },
-  setup() {
-    
-    return {
+import TeamSec from 'src/components/pages/home/TeamSec'
 
-    }
-  },
+
+onMounted(() => {
+  getServices()
 })
+
 </script>

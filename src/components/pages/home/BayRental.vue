@@ -4,13 +4,12 @@
       <h2 class="text-h3 text-weight-medium text-center">Покупка Недвижимости</h2>
 
       <div class="cards-section row" style="width: 100%;">
-        {{ categories }}
         <div 
           class="col-3 car-sec"
           v-for="category in categories"
           :key="category.id"
         >
-          <q-item class="link" clickable v-ripple :to="`/catalog?sale=rent&category=${category.id}`" />
+          <q-item class="link" clickable v-ripple :to="`/catalog?sale=sale&category=${category.id}`" />
           <q-card class="my-card">
             <q-img :src="`${category.image}`">
             <!-- <q-img :src="`http://127.0.0.1:8000/${category.image}`"> -->

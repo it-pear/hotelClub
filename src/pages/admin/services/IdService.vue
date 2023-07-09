@@ -52,7 +52,7 @@
                 filled
                 type="textarea"
                 v-model="formData.prev_description"
-                maxlength="100"
+                maxlength="160"
                 label="описание для превью текста"
                 lazy-rules
                 class="q-mb-md"

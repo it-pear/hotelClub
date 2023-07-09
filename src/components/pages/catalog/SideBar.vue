@@ -357,16 +357,36 @@ const onReset = async () => {
   getPosts()
 }
 
-onMounted(() => {
-  
-  
+onMounted(async () => {
+  await getData()
+
   for (let key in defaultData) {
     if (route.query[key]) {
-      formData.value[key] = route.query[key]
+      if (Array.isArray(defaultData[key])) {
+        formData.value[key] = route.query[key].split(',')
+      } else {
+        formData.value[key] = route.query[key]
+      }
     }
   }
-  getData()
-  getPosts()
+  
+  await getPosts()
+  formData.value = {
+    sale: null,
+    advantages: [],
+    layouts: [],
+    properties: [],
+    region: null,
+    distances: [],
+    page: 1,
+    per_page: 10,
+    last_page: null,
+    category: [],
+    types: [],
+    id: '',
+    price_to: '',
+    price_from: '',
+  }
 })
 
 </script>

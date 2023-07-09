@@ -6,10 +6,10 @@
           <div class="row container" style="align-items: center;">
             <div class="col-xs-12 col-sm-9 col-md-9">
               <a 
-                href="tel:89999999999" 
+                href="tel:+905335024004" 
                 class="phone text-body2 text-weight-medium text-blue-grey-13"
               >
-                8 (999) 999 99-99
+              +90533-502-4004
               </a>
               <a 
                 href="mailto:example@gmail.com" 
@@ -33,11 +33,11 @@
             <q-toolbar-title>
               <q-avatar to="/">
                 <a href="/" class="link"></a>
-                <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg">
+                <img src="/images/logo.jpg">
               </q-avatar>
             </q-toolbar-title>
 
-            <q-tabs align="left" class="tabs-link">
+            <q-tabs align="left" class="tabs-link q-ml-auto">
               <q-route-tab
                 v-for="link in routes"
                 :key="link"
@@ -45,7 +45,7 @@
                 :label="link.name"
               />
             </q-tabs>
-            <q-btn 
+            <!-- <q-btn 
               unelevated rounded color="primary" 
               label="Войти" 
               icon="svguse:icons/allIcons.svg#phone" 
@@ -67,21 +67,19 @@
               class="q-ml-sm q-ml-auto btn-login btn-reverse-il-mb" 
               to="/login"
             />
-            
+             -->
             <q-btn 
               dense 
               flat 
               round 
               color="primary"
               icon="menu" 
-              class="mb-visible"
+              class="mb-visible q-ml-auto"
               @click="toggleRightDrawer" 
             />
           </div>
         <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
       </q-toolbar>
-
-      
     </q-header>
 
     <q-drawer v-model="rightDrawerOpen" side="right" bordered>
@@ -94,10 +92,10 @@
         />
       </q-tabs>
       <a 
-        href="tel:89999999999" 
+        href="tel:+905335024004" 
         class="phone text-body2 text-weight-medium text-blue-grey-13"
       >
-        8 (999) 999 99-99
+        +90533-502-4004
       </a>
       <div class="col-12 flex justify-center socials">
         <q-btn flat round color="primary" icon="telegram" />
@@ -116,10 +114,10 @@
           <q-toolbar style="padding-left: 10px;">
             <q-toolbar-title>
               <q-avatar>
-                <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg">
+                <img src="/images/logo.jpg">
               </q-avatar>
             </q-toolbar-title>
-            <a href="tel:89999999999" class="phone text-body2 text-weight-medium text-blue-grey-13">8 (999) 999 99-99</a>
+            <a href="tel:+905335024004" class="phone text-body2 text-weight-medium text-blue-grey-13">+90533-502-4004</a>
             <q-tabs align="left" class="tabs-link q-ml-auto">
               <q-route-tab
                 v-for="link in routes"

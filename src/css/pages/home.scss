@@ -170,8 +170,17 @@
   }
 }
 
+.q-toolbar .q-avatar {
+  font-size: 58px;
+}
+
 .team-sec {
   padding-bottom: 80px;
+  @media (min-width: 772px) {
+    .container  {
+      max-width: 1460px;
+    }
+  }
   .cards-sec {
     width: 100%;
     .my-card {
@@ -182,7 +191,7 @@
         padding-bottom: 10px;
         .q-img,
         img {
-          height: 216px;
+          height: 280px;
           object-fit: cover;
         }
       }

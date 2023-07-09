@@ -4,7 +4,7 @@
     <HotDeals :posts="hotPosts" v-if="hotPosts" />
     <PropertyRental :categories="categories" />
     <BayRental :categories="categories" />
-    <DocumentsSec />
+    <DocumentsSec :services="services" />
     <div class="container q-pt-lg">
       <FormPerson />
     </div>
@@ -23,15 +23,11 @@ import TeamSec from 'src/components/pages/home/TeamSec'
 import FormPerson from 'src/components/FormPerson'
 import { postsApi } from 'src/api/post'
 import { pagesApi } from 'src/api/pages'
+import { servicesApi } from 'src/api/services'
 
 const hotPosts = ref([])
-const citys = ref(null)
 const categories = ref(null)
-const layouts = ref(null)
-const types = ref(null)
-const distances = ref(null)
-const advantages = ref(null)
-const properties = ref(null)
+const services = ref([])
 
 const getHotPosts = async () => {
   try {
@@ -42,17 +38,23 @@ const getHotPosts = async () => {
   }
 }
 
+const getServices = async () => {
+  try {
+    await servicesApi.getAll().then(resp => {
+      services.value = resp
+    })
+  } catch (err) {
+    console.log(err)
+    alertError()
+  }
+}
+
 async function getData() {
   try {
     const resp = await pagesApi.getAll()
-    advantages.value = resp.advantages
+
     categories.value = resp.categories
-    citys.value = resp.citys
-    properties.value = resp.properties
-    types.value = resp.types
-    distances.value = resp.distances
-    layouts.value = resp.layouts
-    
+
   } catch (err) {
     console.log(err)
   } 
@@ -61,6 +63,7 @@ async function getData() {
 onMounted(() => {
   getHotPosts()
   getData()
+  getServices()
 })
 
 </script>

@@ -5,6 +5,11 @@ $sm-breakpoint: 1024px;
 $md-breakpoint: 1439px;
 $lg-breakpoint: 1920px;
 
+h2 {
+  @media (min-width: 772px) {
+    margin-left: 10px;
+  }
+}
 .container,
 .container-sm,
 .container-md,
@@ -212,4 +217,8 @@ $lg-breakpoint: 1920px;
       right: 30px;
     }
   }
+}
+
+.q-footer {
+  position: relative;
 }

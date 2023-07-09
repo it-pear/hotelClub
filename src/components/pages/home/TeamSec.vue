@@ -5,26 +5,53 @@
       <div class="row cards-sec">
 
         <q-card class="my-card col-4" flat bordered>
-          <img src="https://oir.mobi/uploads/posts/2019-12/1576865863_1-1.jpg">
+          <img src="/images/team1.jpg">
           <q-card-section>
-            <div class="text-h6">Татьяна Павловна</div>
-            <div class="text-subtitle2">Менеджер</div>
+            <div class="text-h6">Вели Эрдемир</div>
+            <div class="text-subtitle2 q-mt-xs">
+              Основатель строительной компании и сети популярных в Алании ресторанов, владелец четырехзвездочного отеля в Обе, совладелец компании Vivamente Property & Construction.<br>
+              В совершенстве владеет турецким, русским и английским языками.
+            </div>
           </q-card-section>
         </q-card>
 
         <q-card class="my-card col-4" flat bordered>
-          <img src="https://img.freepik.com/premium-photo/a-young-guy-sits-at-a-table-in-the-office-and-works-at-a-computer-brunette-sits-at-a-computer-and-works-with-a-cup-of-coffee-in-her-hands_85574-14429.jpg">
+          <img src="/images/team2.jpg">
           <q-card-section>
-            <div class="text-h6">Имя Фамилия</div>
-            <div class="text-subtitle2">Риелтор</div>
+            <div class="text-h6">Сайгидов Даниял Ассадулаевич</div>
+            <div class="text-subtitle2 q-mt-xs">
+              С отличием окончил Международный Китайский Университет Бизнеса и Экономики.С отличием окончил Английскую школу Лингвистики.В совершенстве владеет русским,английским,аварским и китайским языками.Эксперт по недвижимости Турции.
+            </div>
           </q-card-section>
         </q-card>
 
         <q-card class="my-card col-4" flat bordered>
-          <img src="https://cdn-st3.rtr-vesti.ru/vh/pictures/hd/325/404/2.jpg">
+          <img src="/images/team3.jpg">
           <q-card-section>
-            <div class="text-h6">Павлик</div>
-            <div class="text-subtitle2">It гигант</div>
+            <div class="text-h6">Ахундова Сабина Азадовна</div>
+            <div class="text-subtitle2 q-mt-xs">
+              Юрист.Писатель. Эксперт по недвижимости Турции. Совладелец компании Vivamente Property & Construction. Владеет русским, английским и турецким языками.
+            </div>
+          </q-card-section>
+        </q-card>
+
+        <q-card class="my-card col-4" flat bordered>
+          <img src="/images/team4.jpg">
+          <q-card-section>
+            <div class="text-h6">Абдуллаев Нихат Гасанович</div>
+            <div class="text-subtitle2 q-mt-xs">
+              Окончил высшее военное училище.В совершенстве владеет турецким и русским языками.Руководитель отдела по работе с застройщиками.
+            </div>
+          </q-card-section>
+        </q-card>
+
+        <q-card class="my-card col-4" flat bordered>
+          <img src="/images/team5.jpg">
+          <q-card-section>
+            <div class="text-h6">Максим Поляновский</div>
+            <div class="text-subtitle2 q-mt-xs">
+              Юрист, эксперт по недвижимости Турции. В совершенстве владеет русским, английским, румынским и турецким языками.
+            </div>
           </q-card-section>
         </q-card>
 
