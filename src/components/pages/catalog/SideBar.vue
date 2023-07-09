@@ -70,6 +70,28 @@
               </div>
 
               <q-select
+                v-model="formData.category"
+                :options="categories"
+                label="Вид недвижимости"
+                multiple
+                emit-value
+                map-options
+                option-value="id"
+                option-label="name"
+              >
+                <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
+                  <q-item v-bind="itemProps">
+                    <q-item-section>
+                      <q-item-label>{{ opt.name }}</q-item-label>
+                    </q-item-section>
+                    <q-item-section side>
+                      <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
+                    </q-item-section>
+                  </q-item>
+                </template>
+              </q-select>
+              
+              <q-select
                 v-model="formData.layouts"
                 :options="layouts"
                 label="Планировка"
@@ -260,15 +282,16 @@ const emit = defineEmits(['getPosts'])
 
 const defaultData = {
   sale: null,
-  advantages: null,
-  layouts: null,
-  properties: null,
+  advantages: [],
+  layouts: [],
+  properties: [],
   region: null,
-  distances: null,
+  distances: [],
   page: 1,
   per_page: 10,
   last_page: null,
-  types: null,
+  category: [],
+  types: [],
   id: '',
   price_to: '',
   price_from: '',
@@ -317,15 +340,16 @@ watch(() => props.updatePagination, (newVal, oldVal) => {
 const onReset = async () => {
   formData.value = {
     sale: null,
-    advantages: null,
-    layouts: null,
-    properties: null,
+    advantages: [],
+    layouts: [],
+    properties: [],
     region: null,
-    distances: null,
+    distances: [],
     page: 1,
     per_page: 10,
-    types: null,
-
+    last_page: null,
+    category: [],
+    types: [],
     id: '',
     price_to: '',
     price_from: '',
@@ -334,12 +358,13 @@ const onReset = async () => {
 }
 
 onMounted(() => {
+  
+  
   for (let key in defaultData) {
     if (route.query[key]) {
       formData.value[key] = route.query[key]
     }
   }
-
   getData()
   getPosts()
 })

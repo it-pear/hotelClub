@@ -6,13 +6,13 @@
       <div class="row cards">
         <div 
           class="col-xs-12 col-md-3 col-3 card-sec"
-          v-for="item in deals"
-          :key="item"
+          v-for="post in posts"
+          :key="post.id"
         >
           <q-card class="my-card" bordered flat>
-            <q-img src="https://primeinvest.group/wp-content/uploads/2022/12/d2-1.jpg">
+            <q-img :src="`http://127.0.0.1:8000/${post.image}`">
               <div class="absolute-bottom text-subtitle2 text-center" style="padding: 5px 0;">
-                Новостройка
+                {{ post.category.name }}
               </div>
             </q-img>
             
@@ -22,16 +22,16 @@
                 color="primary"
                 class="absolute"
                 style="top: 0; right: 12px; transform: translateY(-50%);"
-                label="1+1"
+                :label="post.layout.name"
               />
 
               <div class="column no-wrap items-start">
                 <div class="text-h6 ellipsis">
-                  Cafe Basilico
+                  {{ post.name }}
                 </div>
                 <div class="text-grey text-caption row no-wrap items-center">
                   <q-icon name="place" />
-                  Аланья, Город
+                  {{ post.city.name }}, {{ post.region.name }}
                 </div>
               </div>
 
@@ -40,14 +40,14 @@
 
             <q-card-section class="q-pt-none row">
               <div class="text-subtitle1 text-weight-bold col-12">
-                $ 100 000
+                € {{ post.price }}
               </div>
               <div class="row items-center" style="width: 100%;">
                 <div class="text-caption text-grey col-6">
-                  Площадь 55 м<sup>2</sup>
+                  Площадь {{ post.square }} м<sup>2</sup>
                 </div>
                 <div class="text-caption text-grey col-6">
-                  До моря 150 м.
+                  До моря {{ post.distance.name }} м.
                 </div>
               </div>
               
@@ -65,7 +65,7 @@
                 color="primary" 
                 class="q-ml-auto" 
                 padding="4px 10px"
-                to="/single/1"
+                :to="`/single/${post.id}`"
               />
             </q-card-actions>
           </q-card>
@@ -88,29 +88,9 @@
   </section>
 </template>
 
-<script>
-import {ref, defineComponent} from 'vue'
-
-export default defineComponent({
-  setup() {
-    const deals = ref([
-      {
-        
-      },
-      {
-
-      },
-      {
-
-      },
-      {
-
-      },
-    ])
-
-    return {
-      deals
-    }
-  },
+<script setup>
+const props = defineProps({
+  posts: Array
 })
+
 </script>

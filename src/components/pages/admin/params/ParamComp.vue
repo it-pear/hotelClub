@@ -62,6 +62,7 @@
               size="sm"
               style="min-width: 26px;"
               @click="data.id = el.id; data.name = el.name; modal = true;"
+              :disable="url === 'type'"
             />
             <q-btn
               unelevated
@@ -74,6 +75,7 @@
               size="sm"
               style="min-width: 26px;"
               @click="del(el.id)"
+              :disable="url === 'type'"
             />
           </q-item-section>
         </q-item>

@@ -53,12 +53,8 @@
   
 </template>
 
-<script>
-import {ref} from 'vue'
-
-export default {
-  setup() {
-    
-  },
-}
+<script setup>
+const props = defineProps({
+  categories: Array
+})
 </script>
