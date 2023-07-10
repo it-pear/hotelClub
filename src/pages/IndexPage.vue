@@ -1,6 +1,8 @@
 <template>
   <q-page>
-    <GeneralPage />
+    <GeneralPage
+      :layouts="layouts"
+    />
     <HotDeals :posts="hotPosts" v-if="hotPosts" />
     <PropertyRental :categories="categories" />
     <BayRental :categories="categories" />
@@ -28,10 +30,11 @@ import { servicesApi } from 'src/api/services'
 const hotPosts = ref([])
 const categories = ref(null)
 const services = ref([])
+const layouts = ref(null)
 
 const getHotPosts = async () => {
   try {
-    const resp = await postsApi.getFilterPosts({is_recommended: 1}); 
+    const resp = await postsApi.getFilterPosts({is_recommended: 1})
     hotPosts.value = resp.data
   } catch (err) {
     console.log(err)
@@ -52,7 +55,7 @@ const getServices = async () => {
 async function getData() {
   try {
     const resp = await pagesApi.getAll()
-
+    layouts.value = resp.layouts
     categories.value = resp.categories
 
   } catch (err) {

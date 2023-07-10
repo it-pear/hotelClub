@@ -9,9 +9,9 @@ function buildQuery(params) {
     if (key === 'id' && value !== null && value !== '') {
       value = Number(value)
     }
-    if (Array.isArray(value)) { // Если значение является массивом
+    if (Array.isArray(value)) {
       value.forEach(val => queryParams.append(`${key}[]`, val))
-    } else if (value !== null && value !== '') { // Если значение не null и не пустая строка
+    } else if (value !== null && value !== '') { 
       queryParams.append(key, value)
     }
   }

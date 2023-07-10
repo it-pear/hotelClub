@@ -1,23 +1,6 @@
 <template>
   <section class="general-page">
-    <q-dialog
-      v-model="accept"
-    >
-      <q-card style="width: 700px; max-width: 80vw;">
-        <q-card-section>
-          <div class="text-h6">Medium</div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-          Click/Tap on the backdrop.
-        </q-card-section>
-
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-    
+        
     <div class="column container">
       <h1 class="text-h1 text-weight-medium text-white text-center">Недвижимость в Турции</h1>
       <h3 class="text-h4 text-white text-center">Покупка, Аренда недвижимости в Турции от звонка до покупки</h3>
@@ -29,35 +12,38 @@
         class="q-gutter-md"
       >
         <q-tabs
-          v-model="tab"
+          v-model="formData.sale"
           inline-label
           class="bg-blue-grey-1 text-blue-grey-13 shadow-2"
         >
-          <q-tab name="1" icon="home" label="Покупка" />
-          <q-tab name="2" icon="money" label="Аренда" />
+          <q-tab name="sale" icon="home" label="Покупка" />
+          <q-tab name="rent" icon="money" label="Аренда" />
         </q-tabs>
         <div class="row content bg-blue-grey-1">
           <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
-              v-model="form.id"
+              v-model="formData.id"
               label="ID Объекта"
               lazy-rules
             />
           </div>
+
           <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-select
-              v-model="model"
-              :options="options"
-              label="Кол-во комнат"
+              v-model="formData.layouts"
+              :options="layouts"
+              label="Плаировка"
               multiple
               emit-value
               map-options
+              option-value="id"
+              option-label="name"
             >
               <template v-slot:option="{ itemProps, opt, selected, toggleOption }">
                 <q-item v-bind="itemProps">
                   <q-item-section>
-                    <q-item-label v-html="opt.label" />
+                    <q-item-label>{{ opt.name }}</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-toggle :model-value="selected" @update:model-value="toggleOption(opt)" />
@@ -69,27 +55,21 @@
           <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
-              v-model="form.priceTo"
+              v-model="formData.price_from"
               label="Цена От"
               lazy-rules
-              :rules="[
-                val => val !== null && val !== '' || 'Пожалуйста заполните это поле',
-              ]"
             />
           </div>
           <div class="col-xs-6 col-md-3 col-3 q-pa-sm">
             <q-input
               type="number"
-              v-model="form.PriceFor"
+              v-model="formData.price_to"
               label="Цена до"
               lazy-rules
-              :rules="[
-                val => val !== null && val !== '' || 'Пожалуйста заполните это поле',
-              ]"
             />
           </div>
 
-          <div class="row col-12 additation">
+          <div class="row col-12 additation q-pt-sm">
             <!-- <q-toggle 
               v-model="accept" 
               label="Дополнительные параметры" 
@@ -105,82 +85,77 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { useQuasar } from 'quasar'
+import { useRouter } from 'vue-router'
 import {ref} from 'vue'
 
-export default {
-  setup() {
-    const $q = useQuasar()
+const props = defineProps({
+  layouts: Array
+})
 
-    const form = ref({
-      id: '',
-      priceTo: '',
-      PriceFor: '',
-    })
-    const accept = ref(false)
+const router = useRouter()
+const $q = useQuasar()
 
-    const model = ref(null)
-    const options = ref([
-      {
-        label: '1 км.',
-        value: 1
-      },
-      {
-        label: '2 км.',
-        value: 2
-      },
-      {
-        label: '3 км.',
-        value: 3
-      },
-      {
-        label: '4 км.',
-        value: 4
-      },
-      {
-        label: '5 км.',
-        value: 5
-      },
-      {
-        label: '6 км.',
-        value: 6
-      },
-    ])
-    
+const formData = ref({
+  sale: null,
+  advantages: [],
+  layouts: [],
+  properties: [],
+  region: null,
+  distances: [],
+  page: 1,
+  per_page: 10,
+  last_page: null,
+  category: [],
+  types: [],
+  id: '',
+  price_to: null,
+  price_from: 0,
+  sale: 'sale'
+})
 
-    return {
-      form,
-      accept,
-      tab: ref('1'),
-      model,
-      options,
+const model = ref(null)
 
-      onSubmit () {
-        if (accept.value !== true) {
-          $q.notify({
-            color: 'red-5',
-            textColor: 'white',
-            icon: 'warning',
-            message: 'You need to accept the license and terms first'
-          })
-        }
-        else {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Submitted'
-          })
-        }
-      },
-
-      onReset () {
-        name.value = null
-        age.value = null
-        accept.value = false
-      }
+const buildQuery = (params) => {
+  let queryParams = new URLSearchParams()
+  for (let key in params) {
+    let value = params[key]
+    if (key === 'id' && value !== null && value !== '') {
+      value = Number(value)
     }
-  },
+    if (Array.isArray(value)) {
+      value.forEach(val => queryParams.append(`${key}[]`, val))
+    } else if (value !== null && value !== '') { 
+      queryParams.append(key, value)
+    }
+  }
+  return queryParams.toString()
 }
+
+const onSubmit = async () => {
+  let query = await buildQuery(formData.value)
+  window.location.href = `/catalog?${query}`
+}
+
+const onReset = () => {
+  formData.value = {
+    sale: null,
+    advantages: [],
+    layouts: [],
+    properties: [],
+    region: null,
+    distances: [],
+    page: 1,
+    per_page: 10,
+    last_page: null,
+    category: [],
+    types: [],
+    id: '',
+    price_to: '',
+    price_from: '',
+    sale: 'sale'
+  }
+}
+
 </script>

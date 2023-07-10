@@ -357,7 +357,7 @@ onMounted(async () => {
   for (let key in defaultData) {
     if (route.query[key]) {
       if (Array.isArray(defaultData[key])) {
-        formData.value[key] = route.query[key].split(',')
+        formData.value[key] = route.query[key]
       } else {
         formData.value[key] = route.query[key]
       }

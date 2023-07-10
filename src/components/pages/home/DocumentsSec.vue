@@ -46,19 +46,12 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.<br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.<br>
-          </q-card-section>
-
+            Добро пожаловать на страницу наших услуг, где вы найдете подробную информацию о широком спектре услуг в сфере недвижимости, которые мы предлагаем в Алании, Газипаше и Анталии. Как ведущее агентство недвижимости, мы стремимся предоставить комплексные решения для удовлетворения всех ваших потребностей в недвижимости.          </q-card-section>
           <q-separator inset />
 
           <q-card-section>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+            В нашей компании мы гордимся своим клиентоориентированным подходом. Мы понимаем, что у каждого клиента есть уникальные потребности, и мы стремимся предложить индивидуальные решения для удовлетворения этих потребностей. Независимо от того, покупаете ли вы, продаете или поддерживаете недвижимость в Турции, вы можете положиться на нас в предоставлении превосходного обслуживания и результатов.<br><br>
+            Ваше путешествие в сфере турецкой недвижимости начинается здесь. Свяжитесь с нами сегодня, чтобы узнать, как мы можем помочь вам с вашими потребностями в недвижимости
           </q-card-section>
         </q-card>
 

@@ -12,21 +12,21 @@
               +90533-502-4004
               </a>
               <a 
-                href="mailto:example@gmail.com" 
+                href="mailto:info@vivamente.com" 
                 class="phone text-body2 text-weight-medium text-blue-grey-13 q-ml-lg"
               >
-                example@gmail.com
+                info@vivamente.com
               </a>
             </div>
 
             <div class="col-xs-12 col-sm-3 col-md-3 flex justify-end">
-              <q-btn flat round color="primary" icon="telegram" />
-              <q-btn flat round color="primary" icon="telegram" />
-              <q-btn flat round color="primary" icon="telegram" />
+              <q-btn flat round color="primary" icon="phone" type="a" href="tel:+905335024004" />
+              <q-btn flat round color="primary" icon="fab fa-whatsapp" type="a" target="_blank" href="https://wa.me/905335024004" />
+              <q-btn flat round color="primary" icon="fab fa-telegram" type="a" target="_blank" href="https://t.me/vivamente_alanya" />
             </div>
           </div>
       </q-toolbar>
-
+      
       <q-toolbar class="bg-white text-blue-grey-13 toolbar-head" color="blue-grey-13" style="min-height: 80px;">
         <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
           <div class="container" style="align-items: center;">

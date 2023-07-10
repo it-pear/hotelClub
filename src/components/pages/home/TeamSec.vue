@@ -57,16 +57,19 @@
 
         <q-card flat bordered class="my-card col-12" >
           <q-card-section>
-            <div class="text-h6">Подробнее о нас...</div>
+            <div class="text-h6">О нас</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.<br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.<br>
+            Добро пожаловать в Vivamente Real Estate , где мы стремимся к совершенству в каждой сделке и каждом взаимодействии.<br><br>
+
+            Работая в сфере недвижимости в течение многих лет, я накопил богатый опыт и понимание уникальных потребностей и ожиданий как местных, так и иностранных клиентов. Моя первостепенная цель — предоставить качественный и бесперебойный сервис всем, кто решит вести с нами бизнес. В Vivamente мы гордимся знаниями, добросовестностью и профессионализмом, которые мы привносим в каждую сделку.<br><br>
+
+            Живя в Алании, я хорошо понимаю местный рынок, его потенциал и образ жизни, который он предлагает. Я постараюсь помочь вам сделать лучший выбор для инвестиций и сделать так, чтобы ваш опыт в Аланье был как можно более полезным и приятным.<br><br>
+
+            Независимо от того, хотите ли вы купить или продать, мы здесь, чтобы предоставить вам разумные советы и рекомендации, основанные на нашем многолетнем опыте и нашем всестороннем понимании рынка недвижимости Аланьи.<br><br>
+
+            Спасибо, что доверяете нам свое путешествие в сфере недвижимости. Это привилегия служить вам.<br>
           </q-card-section>
         </q-card>
 

@@ -81,6 +81,7 @@
           color="primary" 
           size="md"
           padding="10px 24px"
+          to="/catalog"
         />
       </div>
       

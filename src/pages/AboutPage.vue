@@ -11,7 +11,7 @@
             <q-card-section class="info">
               <div class="text-overline">Турция, Аланья</div>
               <div class="text-h5 q-mt-sm q-mb-xs text-weight-medium">
-                ул. Название улицы д. 65 кв. 45
+                Кадипаша Мах. Культура САПР. Günaydın Hotel No: 2/A 07400 Аланья/АНТАЛИЯ
               </div>
               <div class="row work-sec">
                 <div class="col-6 col-md-4 item">
@@ -24,18 +24,19 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Телефоны</div>
-                  <div class="subtitle">+90533 502 4004</div>
-                  <div class="subtitle">+90533 502 4004</div>
+                  <div class="subtitle">+90533 502 4004</div>
+                  <div class="subtitle">+90531 829 9735</div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Мессенджеры</div>
-                  <q-btn flat round color="primary" icon="telegram" />
-                  <q-btn flat round color="primary" icon="telegram" />
-                  <q-btn flat round color="primary" icon="telegram" />
+                  <q-btn flat round color="primary" icon="phone" type="a" href="tel:+905335024004" />
+                  <q-btn flat round color="primary" icon="fab fa-whatsapp" type="a" target="_blank" href="https://wa.me/905335024004" />
+                  <q-btn flat round color="primary" icon="fab fa-telegram" type="a" target="_blank" href="https://t.me/vivamente_alanya" />
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Почта</div>
-                  <div class="subtitle">example@gmail.com</div>
+                  <div class="subtitle">info@vivamente.com</div>
+                  <div class="subtitle">sales@vivamente.com</div>
                 </div>
               </div>
             </q-card-section>
@@ -51,15 +52,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
 import FormPerson from 'src/components/FormPerson'
-import DocumentsSec from 'src/components/pages/home/DocumentsSec'
-
 import TeamSec from 'src/components/pages/home/TeamSec'
-
-
-onMounted(() => {
-  getServices()
-})
-
 </script>
