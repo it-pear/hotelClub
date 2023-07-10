@@ -4,21 +4,22 @@
   >
     <q-card style="width: 700px; max-width: 80vw;">
       <q-card-section>
-        <div class="text-h6">Medium</div>
+        <div class="text-h6">Статус заявки</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        Click/Tap on the backdrop.
+        Ваша заявка принята, в ближайшее время с вами свяжется наш менеджер
       </q-card-section>
 
       <q-card-actions align="right" class="bg-white text-teal">
-        <q-btn flat label="OK" v-close-popup />
+        <q-btn flat label="ОК" v-close-popup />
       </q-card-actions>
     </q-card>
   </q-dialog>
+
   <q-page class="single">
     <div class="container column">
-      <h1 class="text-h4 text-weight-bold text-left">Стильный трёхкомнатный пентхаус с мебелью</h1>
+      <h1 class="text-h4 text-weight-bold text-left">{{ post.name }}</h1>
       <div class="row">
         <div class="col-12 col-md-6">
           <q-carousel
@@ -29,49 +30,57 @@
             infinite
             class="my-carousel"
           >
-            <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-            <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-            <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-            <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+            <q-carousel-slide :name="1" :img-src="`http://127.0.0.1:8000/${post.image}`" />
+            <q-carousel-slide 
+            v-for="image in post.images"
+            :key="image.id"
+              :name="image.id" 
+              :img-src="`http://127.0.0.1:8000/${image.url}`" 
+            />
           </q-carousel>
         </div>
         <div class="col-12 col-md-6">
           <div class="content-single">
-            <div class="content-single__price">189 200 €</div>
-            <div class="content-single__info text-blue-4">Вторичка  <span class="id">ID 110733SH-3P</span></div>
+            <div class="content-single__price">€ {{ post.price }}</div>
+            <div class="content-single__info text-blue-4">
+              {{ post.category?.name }}  
+              <span class="id" v-if="post.sale === 'sale'">Продажа</span> 
+              <span class="id" v-if="post.sale === 'rent'">Аренда</span> 
+              <span class="id">ID {{ post.id }}</span></div>
             <span class="content-single__location">
               <q-icon size="25px" name="svguse:icons/allIcons.svg#location" color="primary" />
-              <div class="text">Газипаша , Газипаша</div>
-              <div class="text-blue-4 more">1000 метров до моря</div>
+              <div class="text">{{ post.city?.name }} , {{ post.region?.name }}</div>
+              <div class="text-blue-4 more">{{ post.distance?.name }} метров до моря</div>
             </span>
             <div class="row prems">
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Общая площадь</div>
-                <div class="subtitle">155,00 м2</div>
+                <div class="subtitle">{{ post.square }} м<sup></sup>2</div>
               </div>
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Этаж</div>
-                <div class="subtitle">9 из 9</div>
+                <div class="subtitle">{{ post.storeys }}</div>
               </div>
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Срок сдачи</div>
-                <div class="subtitle">Сдан</div>
+                <div class="subtitle" v-if="post.deadline === null">Сдан</div>
+                <div class="subtitle" v-else>{{ post.deadline }}</div>
               </div>
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Отделка</div>
-                <div class="subtitle">Чистовая</div>
+                <div class="subtitle">{{ post.finishing }}</div>
               </div>
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Планировка</div>
-                <div class="subtitle">3+1 , Пентхаус</div>
+                <div class="subtitle">{{ post.layout?.name }} , {{ post.type?.name }}</div>
               </div>
               <div class="col-6 col-md-4 item">
                 <div class="title text-blue-4">Район</div>
-                <div class="subtitle">Газипаша</div>
+                <div class="subtitle">{{ post.region?.name }}</div>
               </div>
             </div>
             <q-btn 
-              label="Позвоните мне" 
+              label="Оставить заявку" 
               unelevated 
               rounded 
               color="primary" 
@@ -93,15 +102,7 @@
         >
           <q-card>
             <q-card-section>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-              commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-              eveniet doloribus ullam aliquid.<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-              commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-              eveniet doloribus ullam aliquid.<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-              commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-              eveniet doloribus ullam aliquid.
+              <span v-html="post.description"></span>
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -112,42 +113,18 @@
           label="Инфраструктура"
           class="infrastructure"
         >
-          <q-card>
+          <q-card class="q-pb-md q-pt-md">
             <q-card-section>
-
               <q-card
-                class="my-card text-dark"
+                v-for="property in post.properties"
+                :key="property.id"
+                class="my-card text-dark q-mb-none"
                 bordered
               >
                 <q-card-section>
-                  <div class="text">Открытый бассейн</div>
+                  <div class="text">{{ property.name }}</div>
                 </q-card-section>
               </q-card>
-              <q-card
-                class="my-card text-dark"
-                bordered
-              >
-                <q-card-section>
-                  <div class="text">Открытая парковка</div>
-                </q-card-section>
-              </q-card>
-              <q-card
-                class="my-card text-dark"
-                bordered
-              >
-                <q-card-section>
-                  <div class="text">Охрана 7/24</div>
-                </q-card-section>
-              </q-card>
-              <q-card
-                class="my-card text-dark"
-                bordered
-              >
-                <q-card-section>
-                  <div class="text">Тренажерный зал</div>
-                </q-card-section>
-              </q-card>
-
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -158,30 +135,16 @@
           label="Преимущества"
           class="infrastructure"
         >
-          <q-card>
+          <q-card class="q-pb-md q-pt-md">
             <q-card-section>
               <q-card
+                v-for="advantage in post.advantages"
+                :key="advantage.id"
                 class="my-card text-dark"
                 bordered
               >
                 <q-card-section>
-                  <div class="text">Район открыт для ВНЖ</div>
-                </q-card-section>
-              </q-card>
-              <q-card
-                class="my-card text-dark"
-                bordered
-              >
-                <q-card-section>
-                  <div class="text">От собственников</div>
-                </q-card-section>
-              </q-card>
-              <q-card
-                class="my-card text-dark"
-                bordered
-              >
-                <q-card-section>
-                  <div class="text">С мебелью</div>
+                  <div class="text">{{ advantage.name }}</div>
                 </q-card-section>
               </q-card>
             </q-card-section>
@@ -190,30 +153,61 @@
       </q-list>
 
       <FormPerson />
-      <MoreObjects />
+      <MoreObjects :posts="posts" v-if="posts" />
 
     </div>
   </q-page>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
+<script setup>
+import { ref, onMounted } from 'vue'
 import FormPerson from 'src/components/FormPerson'
 import MoreObjects from 'src/components/pages/single/MoreObjects'
+import { useRoute } from 'vue-router'
+import { postsApi } from 'src/api/post'
 
-export default defineComponent({
-  components: {
-    FormPerson,
-    MoreObjects
-  },
-  setup() {
-    const slide = ref(1)
-    const accept = ref(false)
+const route = useRoute()
+const id = route.params.id
 
-    return {
-      slide,
-      accept
-    }
-  },
+const post = ref({})
+
+const getPost = async () => {
+  try {
+    const resp = await postsApi.getById(id)
+    post.value = resp
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const posts = ref([])
+
+const getPosts = async () => {
+  const resp = await postsApi.getFilterPosts({
+    sale: post.value.sale,
+    advantages: [],
+    layouts: [],
+    properties: [],
+    region: null,
+    distances: [],
+    page: 1,
+    per_page: 4,
+    last_page: null,
+    category: [post.value.category_id],
+    types: [],
+    id: '',
+    price_to: post.value.price + 20000,
+    price_from: 0,
+  })
+  posts.value = resp.data
+}
+
+const slide = ref(1)
+const accept = ref(false)
+
+onMounted(async () => {
+  await getPost()
+  await getPosts()
 })
 </script>

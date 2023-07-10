@@ -132,10 +132,10 @@ export const postsApi = {
       }
     }
     for (let i = 0; i < data.properties.length; i++) {
-      if (data.properties.length) formData.append(`properties[${i}]`, data.properties[i])
+      if (data.properties.length) formData.append(`properties[${i}]`, typeof(data.properties[i]) === 'object' ? data.properties[i].id : data.properties[i])
     }
     for (let i = 0; i < data.advantages.length; i++) {
-      if (data.advantages.length) formData.append(`advantages[${i}]`, data.advantages[i])
+      if (data.advantages.length) formData.append(`advantages[${i}]`, typeof(data.advantages[i]) === 'object' ? data.advantages[i].id : data.advantages[i])
     }
     
 

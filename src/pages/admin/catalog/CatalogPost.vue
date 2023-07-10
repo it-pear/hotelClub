@@ -12,7 +12,11 @@
           to="catalog/create" 
         />
       </div>
-      <FilterCatalog />
+      <FilterCatalog 
+        @getPosts="getPosts" 
+        :updatePagination="pagination.current_page"
+        v-if="pagination" 
+      />
     </div>
 
     <q-table
@@ -48,12 +52,21 @@
         
       </template>
     </q-table>
+
+    <q-pagination
+      v-model="pagination.current_page"
+      :max="pagination.last_page"
+      direction-links
+      @update:model-value="updatePag"
+      v-if="pagination && pagination.last_page > 1"
+      class="q-mt-md"
+    />
     
   </q-page>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { postsApi } from 'src/api/post'
 import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog'
  
@@ -68,33 +81,22 @@ const columns = ref([
   },
   { name: 'image', align: 'left', label: 'Картинка', field: 'image', sortable: false },
   { name: 'name', align: 'left', label: 'Название', field: 'name', sortable: false },
-  // { name: 'apartType', align: 'left', label: 'Тип квартиры', field: row => row.type?.name, sortable: true, },
   { name: 'square', align: 'left', label: 'Площадь', field: 'square', sortable: true, },
-  // { name: 'deadline', align: 'left', label: 'Срок сдачи', field: 'deadline' },
   { name: 'layout', align: 'left', label: 'планировка', field: row => row.layout?.name, sortable: true, },
-  // { name: 'numberStoreys', align: 'left', label: 'Этажность', field: row => row.storeys, sortable: true, },
   { name: 'finishing', align: 'left', label: 'Отделка', field: 'finishing', sortable: true },
   { name: 'price', align: 'left', label: 'Цена', field: 'price', sortable: true, },
   { name: 'city', align: 'left', label: 'Город', field: row => row.city?.name },
-  // { name: 'region', align: 'left', label: 'Район', field: row => row.region?.name, sortable: true, },
-  // { name: 'distanceSea', align: 'left', label: 'Расстояние до моря', field: row => row.distance?.name, sortable: true, },
   { name: 'custom', align: 'left', label: '', field: 'custom', sortable: false },
 ])
 const rows = ref([])
 
-const visibleColumns = ref(['custom', 'id', 'image', 'name', 'square', 'layout', 'finishing', 'price', 'city'])
-const selected = ref([])
+const pagination = ref({})
 
-async function getPosts() {
-  try {
-    await postsApi.getAll().then(resp => {
-      rows.value = resp
-      console.log(resp)
-    })
-  } catch (err) {
-    console.log(err)
-  }
+const getPosts = (data) => {
+  rows.value = data.posts
+  pagination.value = data.pagination
 }
+
 async function delPost(id) {
   try {
     await postsApi.delPost(id).then(resp => {
@@ -105,11 +107,6 @@ async function delPost(id) {
     console.log(err)
   }
 }
-
-onMounted(() => {
-  getPosts()
-})
-
 
 
 </script>

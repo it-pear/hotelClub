@@ -95,7 +95,7 @@
               background: $primary;
               flex: 0 0 calc(25% - 16px);
               max-width: calc(25% - 16px);
-              margin: 16px 8px;
+              margin: 8px 8px;
               
               .q-card__section {
                 padding: 0;
@@ -221,6 +221,22 @@
           }
         }
         
+      }
+    }
+  }
+}
+
+.more-posts {
+  @media (min-width: 772px) {
+    width: calc(100% + 20px);
+    position: relative;
+    left: -10px;
+  }
+  @media (max-width: 772px) {
+    .cards {
+      .card-sec {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   }

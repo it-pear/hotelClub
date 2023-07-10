@@ -90,11 +90,11 @@
           </div>
 
           <div class="row col-12 additation">
-            <q-toggle 
+            <!-- <q-toggle 
               v-model="accept" 
               label="Дополнительные параметры" 
-            />
-            <q-btn label="Поиск" unelevated rounded type="submit" color="primary" class="q-ml-auto"/>
+            /> -->
+            <q-btn label="Поиск" unelevated rounded type="submit" color="primary" />
             <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm" />
           </div>
 

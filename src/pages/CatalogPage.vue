@@ -25,7 +25,9 @@ import SideBar from 'src/components/pages/catalog/SideBar'
 import CatalogSec from 'src/components/pages/catalog/CatalogSec'
 
 const posts = ref([])
-const pagination = ref({})
+const pagination = ref({
+  current_page: null
+})
 
 const updatePagination = (newPage) => {
   pagination.value.current_page = newPage

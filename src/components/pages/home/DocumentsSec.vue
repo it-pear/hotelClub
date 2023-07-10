@@ -13,7 +13,7 @@
         >
           <q-item class="link" clickable v-ripple></q-item>
           <q-img
-            src=""
+            :src="`http://127.0.0.1:8000/${service.image}`"
           />
 
           <q-card-section>
