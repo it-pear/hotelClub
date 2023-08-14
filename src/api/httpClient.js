@@ -6,8 +6,8 @@ const logOut = () => {
 }
 
 const config = {
-  baseURL: "http://127.0.0.1:8000/api/"
-  // baseURL: "http://62.217.177.152/api/"
+  baseURL: "http://back.kvadro93.beget.tech/api/"
+  // baseURL: "http://back.kvadro93.beget.tech/" http://127.0.0.1:8000
 }
 
 const httpClient = axios.create(config)

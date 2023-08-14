@@ -59,7 +59,7 @@
             :key="service.id"
           >
             <q-card class="my-card" bordered flat>
-              <q-img :src="`http://127.0.0.1:8000/${service.image}`">
+              <q-img :src="`http://back.kvadro93.beget.tech/${service.image}`">
                 <div class="text-subtitle2 text-center">
                   <div class="text-h5">{{service.name}}</div>
                   <div class="text-subtitle2">

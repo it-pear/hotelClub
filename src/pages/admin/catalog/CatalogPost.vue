@@ -35,8 +35,8 @@
       </template>
       <template v-slot:body-cell-image="props">
         <q-td :props="props" class="td-image">
-          <img :src="`http://127.0.0.1:8000/${props.row.image}`" alt="">
-          <!-- <img :src="`http://62.217.177.152/${props.row.image}`" alt=""> -->
+          <img :src="`http://back.kvadro93.beget.tech/${props.row.image}`" alt="">
+          <!-- <img :src="`http://back.kvadro93.beget.tech/${props.row.image}`" alt=""> -->
         </q-td>
       </template>
       <template v-slot:body-cell-custom="props">

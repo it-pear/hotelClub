@@ -10,7 +10,7 @@
           :key="post.id"
         >
           <q-card class="my-card" bordered flat>
-            <q-img :src="`http://127.0.0.1:8000/${post.image}`">
+            <q-img :src="`http://back.kvadro93.beget.tech/${post.image}`">
               <div class="absolute-bottom text-subtitle2 text-center" style="padding: 5px 0;">
                 {{ post.category.name }}
               </div>
