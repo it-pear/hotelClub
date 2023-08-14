@@ -85,7 +85,7 @@
           <q-input
             filled
             v-model="formData.square"
-            label="Площадь помещения"
+            label="Площадь помещения м"
             lazy-rules
             type="number"
             :rules="[
