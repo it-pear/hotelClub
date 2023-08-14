@@ -85,9 +85,9 @@
           <q-input
             filled
             v-model="formData.square"
-            label="Площадь помещения (00.00)"
+            label="Площадь помещения"
             lazy-rules
-            mask="##.##"
+            type="number"
             :rules="[
               (val) => (val && val.length > 0) || 'Поле не должно быть пустым',
             ]"
