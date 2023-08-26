@@ -199,10 +199,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRouter, useRoute } from 'vue-router'
 import { useQuasar } from "quasar";
-import { servicesApi } from 'src/api/services'
+import { servicesApi } from 'src/api/services';
+import { onMounted, ref } from "vue";
+import { useRoute, useRouter } from 'vue-router';
 
 const $q = useQuasar()
 const route = useRoute()

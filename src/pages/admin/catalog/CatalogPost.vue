@@ -66,9 +66,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { postsApi } from 'src/api/post'
-import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog'
+import { postsApi } from 'src/api/post';
+import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog';
+import { ref } from 'vue';
  
 const columns = ref([
   {

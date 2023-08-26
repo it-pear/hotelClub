@@ -66,8 +66,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { servicesApi } from 'src/api/services'
+import { servicesApi } from 'src/api/services';
+import { onMounted, ref } from 'vue';
  
 const columns = ref([
   {

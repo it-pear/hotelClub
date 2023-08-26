@@ -160,11 +160,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { postsApi } from 'src/api/post'
 import FormPerson from 'src/components/FormPerson'
 import MoreObjects from 'src/components/pages/single/MoreObjects'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { postsApi } from 'src/api/post'
 
 const route = useRoute()
 const id = route.params.id

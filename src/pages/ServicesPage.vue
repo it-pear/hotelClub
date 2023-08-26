@@ -106,10 +106,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useQuasar } from 'quasar'
-import FormPerson from 'src/components/FormPerson'
-import { servicesApi } from 'src/api/services'
+import { useQuasar } from 'quasar';
+import { servicesApi } from 'src/api/services';
+import FormPerson from 'src/components/FormPerson';
+import { onMounted, ref } from 'vue';
 
 const $q = useQuasar()
 

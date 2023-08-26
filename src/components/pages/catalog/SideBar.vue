@@ -362,7 +362,8 @@ onMounted(async () => {
   for (let key in defaultData) {
     if (route.query[key]) {
       if (Array.isArray(defaultData[key])) {
-        formData.value[key] = route.query[key]
+        const queryValues = Array.isArray(route.query[key]) ? route.query[key] : [route.query[key]];
+        formData.value[key] = queryValues.map(item => parseInt(item))
       } else {
         formData.value[key] = route.query[key]
       }
@@ -370,22 +371,6 @@ onMounted(async () => {
   }
   
   await getPosts()
-  formData.value = {
-    sale: null,
-    advantages: [],
-    layouts: [],
-    properties: [],
-    region: null,
-    distances: [],
-    page: 1,
-    per_page: 10,
-    last_page: null,
-    category: [],
-    types: [],
-    id: '',
-    price_to: '',
-    price_from: '',
-  }
 })
 
 </script>
