@@ -6,10 +6,10 @@
           <div class="row container" style="align-items: center;">
             <div class="col-xs-12 col-sm-9 col-md-9">
               <a 
-                href="tel:+905318299735" 
+                href="tel:+905363369711" 
                 class="phone text-body2 text-weight-medium text-blue-grey-13"
               >
-              +90531-829-9735
+              +90536-336-9711
               </a>
               <a 
                 href="mailto:info@vivamente.com" 
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-3 col-md-3 flex justify-end">
-              <q-btn flat round color="primary" icon="phone" type="a" href="tel:+905318299735" />
+              <q-btn flat round color="primary" icon="phone" type="a" href="tel:+905363369711" />
               <q-btn flat round color="primary" icon="fab fa-whatsapp" type="a" target="_blank" href="https://wa.me/905318299735" />
               <q-btn flat round color="primary" icon="fab fa-telegram" type="a" target="_blank" href="https://t.me/vivamente_alanya" />
             </div>
@@ -92,10 +92,10 @@
         />
       </q-tabs>
       <a 
-        href="tel:+905318299735" 
+        href="tel:+905363369711" 
         class="phone text-body2 text-weight-medium text-blue-grey-13"
       >
-        +90531-829-9735
+        +90536-336-9711
       </a>
       <div class="col-12 flex justify-center socials">
         <q-btn flat round color="primary" icon="telegram" />
@@ -117,7 +117,7 @@
                 <img src="/images/logo.jpg">
               </q-avatar>
             </q-toolbar-title>
-            <a href="tel:+905318299735" class="phone text-body2 text-weight-medium text-blue-grey-13">+90531-829-9735</a>
+            <a href="tel:+905363369711" class="phone text-body2 text-weight-medium text-blue-grey-13">+90536-336-9711</a>
             <q-tabs align="left" class="tabs-link q-ml-auto">
               <q-route-tab
                 v-for="link in routes"
