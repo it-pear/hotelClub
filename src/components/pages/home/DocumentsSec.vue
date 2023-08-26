@@ -13,7 +13,7 @@
         >
           <q-item class="link" clickable v-ripple></q-item>
           <q-img
-            :src="`http://back.kvadro93.beget.tech/${service.image}`"
+            :src="`https://back.vivamentehome.com/${service.image}`"
           />
 
           <q-card-section>

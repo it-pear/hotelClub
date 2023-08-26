@@ -19,7 +19,7 @@
 
           <div class="row">
             <!-- <div class="col-12 q-pr-sm q-mb-lg">
-              <img :src="`http://back.kvadro93.beget.tech/${formData.image}`" alt="">
+              <img :src="`https://back.vivamentehome.com/${formData.image}`" alt="">
               <q-btn
                 rounded
                 outline
@@ -34,7 +34,7 @@
             <div class="col-12 q-pr-sm q-mb-lg">
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Заменить изображение</div>
-                <img :src="`http://back.kvadro93.beget.tech/${formData.image}`" alt="" style="max-width: 300px;">
+                <img :src="`https://back.vivamentehome.com/${formData.image}`" alt="" style="max-width: 300px;">
                 <q-uploader
                   @added="onFileChange"
                   accept=".jpg, .png, image/*"

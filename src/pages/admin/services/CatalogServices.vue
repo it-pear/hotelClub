@@ -29,7 +29,7 @@
       </template>
       <template v-slot:body-cell-image="props">
         <q-td :props="props" class="td-image">
-          <img :src="`http://back.kvadro93.beget.tech/${props.row.image}`" alt="">
+          <img :src="`https://back.vivamentehome.com/${props.row.image}`" alt="">
         </q-td>
       </template>
       <template v-slot:body-cell-custom="props">

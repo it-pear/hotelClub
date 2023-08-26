@@ -7,7 +7,7 @@
         :key="item.id"
       >
         <q-card class="my-card" flat bordered>
-          <q-img :src="`http://back.kvadro93.beget.tech/${item.image}`" height="210px">
+          <q-img :src="`https://back.vivamentehome.com/${item.image}`" height="210px">
             <div class="absolute-bottom text-subtitle2 text-center" style="padding: 5px 0;">
               {{ item.category?.name }}
             </div>

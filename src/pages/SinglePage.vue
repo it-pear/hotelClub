@@ -30,12 +30,12 @@
             infinite
             class="my-carousel"
           >
-            <q-carousel-slide :name="1" :img-src="`http://back.kvadro93.beget.tech/${post.image}`" />
+            <q-carousel-slide :name="1" :img-src="`https://back.vivamentehome.com/${post.image}`" />
             <q-carousel-slide 
             v-for="image in post.images"
             :key="image.id"
               :name="image.id" 
-              :img-src="`http://back.kvadro93.beget.tech/${image.url}`" 
+              :img-src="`https://back.vivamentehome.com/${image.url}`" 
             />
           </q-carousel>
         </div>

@@ -59,7 +59,7 @@
             :key="service.id"
           >
             <q-card class="my-card" bordered flat>
-              <q-img :src="`http://back.kvadro93.beget.tech/${service.image}`">
+              <q-img :src="`https://back.vivamentehome.com/${service.image}`">
                 <div class="text-subtitle2 text-center">
                   <div class="text-h5">{{service.name}}</div>
                   <div class="text-subtitle2">

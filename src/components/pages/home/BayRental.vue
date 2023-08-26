@@ -12,7 +12,7 @@
           <q-item class="link" clickable v-ripple :to="`/catalog?sale=sale&category=${category.id}`" />
           <q-card class="my-card">
             <q-img :src="`${category.image}`">
-            <!-- <q-img :src="`http://back.kvadro93.beget.tech/${category.image}`"> -->
+            <!-- <q-img :src="`https://back.vivamentehome.com/${category.image}`"> -->
               <div class="absolute-bottom text-h6">
                 {{ category.name }}
               </div>

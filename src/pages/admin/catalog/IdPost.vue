@@ -40,7 +40,7 @@
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Главное изображение</div>
                 <div>
-                  <img :src="`http://back.kvadro93.beget.tech/${formData.image}`" alt="" class="full-width"> 
+                  <img :src="`https://back.vivamentehome.com/${formData.image}`" alt="" class="full-width"> 
                 </div>
                 <q-uploader
                   @added="onFileChange"
@@ -67,7 +67,7 @@
                         style="cursor: pointer;" 
                         @click="delImageGallery(image.id)" 
                       />
-                      <img :src="`http://back.kvadro93.beget.tech/${image.url}`" alt="" class="full-width"> 
+                      <img :src="`https://back.vivamentehome.com/${image.url}`" alt="" class="full-width"> 
                     </div>
                   </div>
                 </div>
