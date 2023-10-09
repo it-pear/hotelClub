@@ -4,8 +4,9 @@
       :layouts="layouts"
     />
     <HotDeals :posts="hotPosts" v-if="hotPosts" />
+
+    <BayRental :categories="categories1" />
     <PropertyRental :categories="categories" />
-    <BayRental :categories="categories" />
     <DocumentsSec :services="services" />
     <div class="container q-pt-lg">
       <FormPerson />
@@ -28,6 +29,7 @@ import { pagesApi } from 'src/api/pages'
 import { servicesApi } from 'src/api/services'
 
 const hotPosts = ref([])
+const categories1 = ref(null)
 const categories = ref(null)
 const services = ref([])
 const layouts = ref(null)
@@ -57,10 +59,15 @@ async function getData() {
     const resp = await pagesApi.getAll()
     layouts.value = resp.layouts
     categories.value = resp.categories
-
+    categories1.value = resp.categories
+    const newCategories = resp.categories.map((category, index) => ({
+      ...category,
+      image: `images/house${index + 1}.jpg`
+    }))
+    categories1.value = newCategories
   } catch (err) {
     console.log(err)
-  } 
+  }
 }
 
 onMounted(() => {

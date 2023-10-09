@@ -9,7 +9,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        
+
         <q-form
           @submit="onSubmit"
           @reset="onReset"
@@ -41,10 +41,10 @@
       </q-card-section>
 
       <q-card-actions align="right" class="bg-white text-teal">
-        
+
       </q-card-actions>
     </q-card>
-    
+
   </q-dialog>
 
 
@@ -53,7 +53,7 @@
       <h2 class="text-h3 text-weight-medium text-center">Услуги</h2>
       <div class="content">
         <div class="row list">
-          <div 
+          <div
             class="col-12 col-md-6 item"
             v-for="service in services"
             :key="service.id"
@@ -72,11 +72,11 @@
                 <div class="services__info">
                   <span v-html="service.description"></span>
                 </div>
-                <q-btn 
-                  label="Записаться на консультацию" 
-                  unelevated 
-                  rounded 
-                  color="primary" 
+                <q-btn
+                  label="Записаться на консультацию"
+                  unelevated
+                  rounded
+                  color="primary"
                   size="md"
                   padding="10px 24px"
                   @click="accept = true"
@@ -98,8 +98,8 @@
         <div class="form-sec q-pt-xl">
           <FormPerson />
         </div>
-        
-        
+
+
       </div>
     </div>
   </q-page>

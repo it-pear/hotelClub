@@ -4,7 +4,7 @@
       <h2 class="text-h3 text-weight-medium text-center">Аренда Недвижимости</h2>
 
       <div class="cards-section row" style="width: 100%;">
-        <div 
+        <div
           class="col-3 car-sec"
           v-for="category in categories"
           :key="category.id"
@@ -18,24 +18,24 @@
               </div>
             </q-img>
           </q-card>
-        </div>        
+        </div>
       </div>
 
       <div class="text-center q-pt-lg w-100">
-        <q-btn 
-          label="Смотреть весь каталог" 
-          unelevated 
-          rounded 
-          color="primary" 
+        <q-btn
+          label="Смотреть весь каталог"
+          unelevated
+          rounded
+          color="primary"
           size="md"
           padding="10px 24px"
           to="/catalog"
         />
       </div>
-      
+
     </div>
   </section>
-  
+
 </template>
 
 <script setup>

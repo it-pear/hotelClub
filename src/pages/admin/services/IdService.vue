@@ -5,7 +5,7 @@
     <q-form @submit="updateObject" @reset="onReset" class="q-gutter-md">
       <div class="row">
         <div class="col-12 col-lg-6 q-pr-md">
-          
+
           <q-input
             filled
             v-model="formData.name"
@@ -64,8 +64,8 @@
 
             </div>
           </div>
-          
-          
+
+
           <div class="col-12 q-pr-sm q-mb-lg">
             <div class="form-group">
               <div class="text-subtitle2 q-mb-sm">Описание услуги</div>
@@ -155,7 +155,7 @@
               />
             </div>
           </div>
-          
+
 
           <q-input
             filled
@@ -164,7 +164,7 @@
             label="Цена (euro)"
             lazy-rules
             class="q-mb-md"
-            
+
           />
         </div>
 

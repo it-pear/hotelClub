@@ -3,17 +3,17 @@
     <div class="filter q-pb-lg">
       <div class="row q-mb-md items-center justify-between">
         <div class="text-h5 ">Услуги</div>
-        <q-btn 
-          outline 
-          round 
-          color="primary" 
-          icon="add" 
-          class="q-mr-md" 
-          to="services/create" 
+        <q-btn
+          outline
+          round
+          color="primary"
+          icon="add"
+          class="q-mr-md"
+          to="services/create"
         />
       </div>
     </div>
-    
+
     <q-table
       flat
       bordered
@@ -42,12 +42,12 @@
       </template>
       <template v-slot:body-cell-prev_description="props">
         <q-td :props="props" class="td-prevdesc">
-          <div 
+          <div
             style="max-width: 250px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
+            -webkit-box-orient: vertical;
             overflow: hidden;
             white-space: normal;
             text-overflow: ellipsis;"
@@ -58,17 +58,17 @@
       </template>
 
       <template v-slot:bottom>
-        
+
       </template>
     </q-table>
-    
+
   </q-page>
 </template>
 
 <script setup>
 import { servicesApi } from 'src/api/services';
 import { onMounted, ref } from 'vue';
- 
+
 const columns = ref([
   {
     name: 'id',

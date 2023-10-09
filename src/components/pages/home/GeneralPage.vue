@@ -1,6 +1,6 @@
 <template>
   <section class="general-page">
-        
+
     <div class="column container">
       <h1 class="text-h1 text-weight-medium text-white text-center">Недвижимость в Турции</h1>
       <h3 class="text-h4 text-white text-center">Покупка, Аренда недвижимости в Турции от звонка до покупки</h3>
@@ -33,7 +33,7 @@
             <q-select
               v-model="formData.layouts"
               :options="layouts"
-              label="Плаировка"
+              label="Планировка"
               multiple
               emit-value
               map-options
@@ -70,16 +70,16 @@
           </div>
 
           <div class="row col-12 additation q-pt-sm">
-            <!-- <q-toggle 
-              v-model="accept" 
-              label="Дополнительные параметры" 
+            <!-- <q-toggle
+              v-model="accept"
+              label="Дополнительные параметры"
             /> -->
             <q-btn label="Поиск" unelevated rounded type="submit" color="primary" />
             <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm" />
           </div>
 
         </div>
-        
+
       </q-form>
     </div>
   </section>
@@ -126,7 +126,7 @@ const buildQuery = (params) => {
     }
     if (Array.isArray(value)) {
       value.forEach(val => queryParams.append(`${key}[]`, val))
-    } else if (value !== null && value !== '') { 
+    } else if (value !== null && value !== '') {
       queryParams.append(key, value)
     }
   }

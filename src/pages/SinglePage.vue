@@ -31,11 +31,11 @@
             class="my-carousel"
           >
             <q-carousel-slide :name="1" :img-src="`https://back.vivamentehome.com/${post.image}`" />
-            <q-carousel-slide 
+            <q-carousel-slide
             v-for="image in post.images"
             :key="image.id"
-              :name="image.id" 
-              :img-src="`https://back.vivamentehome.com/${image.url}`" 
+              :name="image.id"
+              :img-src="`https://back.vivamentehome.com/${image.url}`"
             />
           </q-carousel>
         </div>
@@ -43,9 +43,9 @@
           <div class="content-single">
             <div class="content-single__price">€ {{ post.price }}</div>
             <div class="content-single__info text-blue-4">
-              {{ post.category?.name }}  
-              <span class="id" v-if="post.sale === 'sale'">Продажа</span> 
-              <span class="id" v-if="post.sale === 'rent'">Аренда</span> 
+              {{ post.category?.name }}
+              <span class="id" v-if="post.sale === 'sale'">Продажа</span>
+              <span class="id" v-if="post.sale === 'rent'">Аренда</span>
               <span class="id">ID {{ post.id }}</span></div>
             <span class="content-single__location">
               <q-icon size="25px" name="svguse:icons/allIcons.svg#location" color="primary" />
@@ -79,11 +79,11 @@
                 <div class="subtitle">{{ post.region?.name }}</div>
               </div>
             </div>
-            <q-btn 
-              label="Оставить заявку" 
-              unelevated 
-              rounded 
-              color="primary" 
+            <q-btn
+              label="Оставить заявку"
+              unelevated
+              rounded
+              color="primary"
               size="md"
               padding="10px 24px"
               @click="accept = true"

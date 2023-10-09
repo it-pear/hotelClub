@@ -55,6 +55,16 @@
           </q-card-section>
         </q-card>
 
+        <q-card class="my-card col-4" flat bordered>
+          <img src="/images/team6.jpg">
+          <q-card-section>
+            <div class="text-h6">Сайгун Абдуллаев</div>
+            <div class="text-subtitle2 q-mt-xs">
+              В совершенстве владеет русским, турецким языками. Изучает английский и итальянский. Ведущий youtube канала Vivamente Property&Construction. Маленький блогер.
+            </div>
+          </q-card-section>
+        </q-card>
+
         <q-card flat bordered class="my-card col-12" >
           <q-card-section>
             <div class="text-h6">О нас</div>
@@ -83,7 +93,7 @@ import {ref, defineComponent} from 'vue'
 
 export default defineComponent({
   setup() {
-    
+
   },
 })
 </script>

@@ -5,7 +5,7 @@
     <q-form @submit="updateObject" class="q-gutter-md">
       <div class="row">
         <div class="col-12 col-lg-6 q-pr-md">
-          
+
           <q-input
             filled
             v-model="formData.name"
@@ -40,7 +40,7 @@
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Главное изображение</div>
                 <div>
-                  <img :src="`https://back.vivamentehome.com/${formData.image}`" alt="" class="full-width"> 
+                  <img :src="`https://back.vivamentehome.com/${formData.image}`" alt="" class="full-width">
                 </div>
                 <q-uploader
                   @added="onFileChange"
@@ -54,20 +54,20 @@
               <div class="form-group">
                 <div class="text-subtitle2 q-mb-sm">Фото для галереи</div>
                 <div class="row">
-                  <div 
+                  <div
                     class="col-12 col-lg-4 q-pa-xs"
                     v-for="image in formData.images"
                     :key="image.id"
                   >
                     <div class="image-section">
-                      <q-icon 
-                        name="close" 
-                        size="18px" 
-                        color="white" 
-                        style="cursor: pointer;" 
-                        @click="delImageGallery(image.id)" 
+                      <q-icon
+                        name="close"
+                        size="18px"
+                        color="white"
+                        style="cursor: pointer;"
+                        @click="delImageGallery(image.id)"
                       />
-                      <img :src="`https://back.vivamentehome.com/${image.url}`" alt="" class="full-width"> 
+                      <img :src="`https://back.vivamentehome.com/${image.url}`" alt="" class="full-width">
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,7 @@
               val => val || 'Поле не должно быть пустым',
             ]"
           />
-            
+
           <q-select
             filled
             v-model="formData.layout_id"
@@ -401,7 +401,7 @@ async function getData() {
   } catch (err) {
     console.log(err)
     alertError()
-  } 
+  }
 }
 
 const getPost = async () => {
@@ -417,7 +417,7 @@ const getPost = async () => {
 
     formData.value.floorthis = formData.value.storeys.split(' из ')[0]
     formData.value.floorIs = formData.value.storeys.split(' из ')[1]
-    
+
     if (formData.value.deadline === null) value.value = true
   } catch (err) {
     console.log(err)

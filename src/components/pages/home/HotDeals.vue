@@ -4,7 +4,7 @@
       <h2 class="text-h3 text-weight-medium text-center">Горячие предложения</h2>
 
       <div class="row cards">
-        <div 
+        <div
           class="col-xs-12 col-md-3 col-3 card-sec"
           v-for="post in posts"
           :key="post.id"
@@ -15,7 +15,7 @@
                 {{ post.category.name }}
               </div>
             </q-img>
-            
+
             <q-card-section>
               <q-btn
                 fab
@@ -50,20 +50,20 @@
                   До моря {{ post.distance.name }} м.
                 </div>
               </div>
-              
+
             </q-card-section>
 
             <q-separator />
 
             <q-card-actions class="justify-between">
               <q-btn flat round icon="event" />
-              <q-btn 
-                label="Подробнее" 
-                outline 
-                no-caps 
-                rounded 
-                color="primary" 
-                class="q-ml-auto" 
+              <q-btn
+                label="Подробнее"
+                outline
+                no-caps
+                rounded
+                color="primary"
+                class="q-ml-auto"
                 padding="4px 10px"
                 :to="`/single/${post.id}`"
               />
@@ -74,17 +74,17 @@
       </div>
 
       <div class="text-center q-pt-lg w-100">
-        <q-btn 
-          label="Смотреть весь каталог" 
-          unelevated 
-          rounded 
-          color="primary" 
+        <q-btn
+          label="Смотреть весь каталог"
+          unelevated
+          rounded
+          color="primary"
           size="md"
           padding="10px 24px"
           to="/catalog"
         />
       </div>
-      
+
     </div>
   </section>
 </template>

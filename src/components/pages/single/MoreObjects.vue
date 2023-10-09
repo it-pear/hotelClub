@@ -3,7 +3,7 @@
     <h2 class="text-h4 text-weight-bold text-left">Похожие объекты</h2>
     <div class="row cards">
 
-      <div 
+      <div
         class="col-xs-12 col-md-4 col-lg-3 q-pa-sm card-sec"
         v-for="item in posts"
         :key="item"
@@ -14,7 +14,7 @@
               {{ item.category?.name }}
             </div>
           </q-img>
-          
+
           <q-card-section>
             <q-btn
               fab
@@ -49,20 +49,20 @@
                 До моря {{ item.distance?.name }} м.
               </div>
             </div>
-            
+
           </q-card-section>
 
           <q-separator />
 
           <q-card-actions class="justify-between">
             <q-btn flat round icon="event" />
-            <q-btn 
-              label="Подробнее" 
-              outline 
-              no-caps 
-              rounded 
-              color="primary" 
-              class="q-ml-auto" 
+            <q-btn
+              label="Подробнее"
+              outline
+              no-caps
+              rounded
+              color="primary"
+              class="q-ml-auto"
               padding="4px 10px"
               :to="`/single/${item.id}`"
             />

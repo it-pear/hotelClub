@@ -1,7 +1,7 @@
 <template>
   <div class="catalog-sec">
     <div class="row cards">
-      <div 
+      <div
         class="col-xs-12 col-md-4 col-4 card-sec"
         v-for="item in posts"
         :key="item.id"
@@ -12,7 +12,7 @@
               {{ item.category?.name }}
             </div>
           </q-img>
-          
+
           <q-card-section>
             <q-btn
               fab
@@ -47,20 +47,20 @@
                 До моря {{ item.distance?.name }} м.
               </div>
             </div>
-            
+
           </q-card-section>
 
           <q-separator />
 
           <q-card-actions class="justify-between">
             <q-btn flat round icon="event" />
-            <q-btn 
-              label="Подробнее" 
-              outline 
-              no-caps 
-              rounded 
-              color="primary" 
-              class="q-ml-auto" 
+            <q-btn
+              label="Подробнее"
+              outline
+              no-caps
+              rounded
+              color="primary"
+              class="q-ml-auto"
               padding="4px 10px"
               :to="`/single/${item.id}`"
             />
@@ -78,7 +78,7 @@
       />
 
     </div>
-    
+
   </div>
 </template>
 
@@ -101,5 +101,5 @@
   watch(() => props.pagination, (newVal) => {
     current.value = newVal?.current_page
   }, { immediate: true })
-  
+
 </script>

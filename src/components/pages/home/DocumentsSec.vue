@@ -3,12 +3,12 @@
     <div class="container column">
       <h2 class="text-h3 text-weight-medium text-center">Услуги</h2>
       <div class="row cards-sec">
-        
-        <q-card 
+
+        <q-card
           v-for="service in services"
           :key="service.id"
-          class="my-card col-4" 
-          flat 
+          class="my-card col-4"
+          flat
           bordered
         >
           <q-item class="link" clickable v-ripple></q-item>
@@ -25,13 +25,13 @@
           </q-card-section>
 
           <q-card-actions>
-            <q-btn 
-              label="Получить консультацию" 
-              outline 
-              no-caps 
-              rounded 
-              color="primary" 
-              class="q-ml-auto" 
+            <q-btn
+              label="Получить консультацию"
+              outline
+              no-caps
+              rounded
+              color="primary"
+              class="q-ml-auto"
               padding="4px 10px"
             />
 

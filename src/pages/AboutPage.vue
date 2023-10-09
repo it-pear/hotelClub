@@ -2,7 +2,7 @@
   <q-page class="about">
     <div class="container column">
       <h2 class="text-h3 text-weight-medium text-center">Контакты</h2>
-      
+
       <div class="content">
         <q-card class="my-card" flat bordered>
           <q-card-section horizontal>
@@ -24,8 +24,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Телефоны</div>
-                  <div class="subtitle">+90536-336-9711</div>
-                  <div class="subtitle">+90531 829 9735</div>
+                  <div class="subtitle">+90 (536) 336-9711</div>
+                  <div class="subtitle">+90 (531) 829-9735</div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 item">
                   <div class="title text-blue-4">Мессенджеры</div>

@@ -7,7 +7,7 @@ const logOut = () => {
 
 const config = {
   baseURL: "https://back.vivamentehome.com/api/"
-  // baseURL: "https://back.vivamentehome.com/" http://127.0.0.1:8000
+  // baseURL: "https://back.vivamentehome.com/" https://back.vivamentehome.com
 }
 
 const httpClient = axios.create(config)
@@ -22,7 +22,7 @@ httpClient.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 )
-  
+
 httpClient.interceptors.response.use(function (response) {
   return response
 }, function (error) {
@@ -34,7 +34,7 @@ httpClient.interceptors.response.use(function (response) {
 
     if(err === 401) {
       console.log('Неавторизован')
-      logOut() 
+      logOut()
     }
     if(err === 403) {
       console.log('Нет доступа')

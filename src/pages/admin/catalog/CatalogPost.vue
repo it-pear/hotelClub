@@ -3,19 +3,19 @@
     <div class="filter q-pb-lg">
       <div class="row q-mb-md items-center justify-between">
         <div class="text-h5 ">Фильтр по параметрам</div>
-        <q-btn 
-          outline 
-          round 
-          color="primary" 
-          icon="add" 
-          class="q-mr-md" 
-          to="catalog/create" 
+        <q-btn
+          outline
+          round
+          color="primary"
+          icon="add"
+          class="q-mr-md"
+          to="catalog/create"
         />
       </div>
-      <FilterCatalog 
-        @getPosts="getPosts" 
+      <FilterCatalog
+        @getPosts="getPosts"
         :updatePagination="pagination.current_page"
-        v-if="pagination" 
+        v-if="pagination"
       />
     </div>
 
@@ -49,7 +49,7 @@
       </template>
 
       <template v-slot:bottom>
-        
+
       </template>
     </q-table>
 
@@ -61,7 +61,7 @@
       v-if="pagination && pagination.last_page > 1"
       class="q-mt-md"
     />
-    
+
   </q-page>
 </template>
 
@@ -69,7 +69,7 @@
 import { postsApi } from 'src/api/post';
 import FilterCatalog from 'src/components/pages/admin/catalog/FilterCatalog';
 import { ref } from 'vue';
- 
+
 const columns = ref([
   {
     name: 'id',
